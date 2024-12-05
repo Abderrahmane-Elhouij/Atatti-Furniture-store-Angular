@@ -9,3 +9,6 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: 'Nunito', "Helvetica Neue", sans-serif; }
 
+model-viewer::part(loading-indicator) {
+    display: none;
+  }

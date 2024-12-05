@@ -101,7 +101,7 @@
             <span class="text-sm font-medium text-slate-600">Showing 1-10 of 10 results</span>
             <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 ">           
                 @for (product of chairs; track $index) {
-                    <app-product [product]="product"></app-product>
+                    <app-product  [height]="'280px'" [product]="product"></app-product>
                 }
             </div>
          </div>

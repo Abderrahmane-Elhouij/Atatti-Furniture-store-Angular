@@ -5,7 +5,7 @@ import { FabricOption } from '../app.model';
 import { MatListModule } from '@angular/material/list';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MockDataService } from '../services/mock-data.service';
-import { ProductComponent } from "../product/product.component";
+import { ProductComponent } from './product/product.component';
 
 
 @Component({

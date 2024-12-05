@@ -1,0 +1,43 @@
+@if (true) {
+
+  <div class="relative group">
+    <img src="{{ product.image }}" alt="{{ product.name }}" class="w-full h-[{{height}}] object-cover"> 
+    <div *ngIf="product.quantity" class="absolute top-0 left-0 bg-blue-700 text-white px-2 py-0.5 rounded-br-lg">
+      <span class="text-sm">-{{ product.quantity }}%</span>
+    </div>
+  
+    <div class="p-4 flex flex-col items-center text-center">
+      <h4 class="text-base font-semibold">{{ product.name }}</h4>
+      <div class="flex gap-2">
+        <p class="text-gray-500 line-through text-sm font-normal" *ngIf="product.price">{{ product.price + (product.price * (product.quantity / 100)) | currency }}</p>
+        <p class="text-gray-700 text-sm font-normal">{{ product.price | currency }}</p>
+      </div>
+    </div>
+    
+    <div class="absolute bottom-[90px] left-1/2 transform -translate-x-1/2 flex gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+      <a href="#" class="text-sm bg-black text-white p-2 h-8 rounded-md">
+        <fa-icon [icon]="faEye"></fa-icon>
+      </a>
+      <a href="#" class="text-sm bg-black text-white p-2 h-8 rounded-md">
+        <fa-icon [icon]="faHeart"></fa-icon>
+      </a>
+    </div>
+    
+          
+  </div>
+  
+
+}
+@else {
+<div class="w-80 mt-20">
+  <model-viewer 
+    src="assets/3dModels/showcase_armchairblack.glb" 
+    alt="A 3D model" 
+    camera-controls 
+    auto-rotate 
+    scale="4 4 4"
+    style="width: 150%; height: 400px;">
+  </model-viewer>
+</div>
+
+}

@@ -1,70 +1,87 @@
-<div class="container mx-auto">
+<div>
   <div
-    class="bg-cover bg-center h-[412px]"
+    class="flex bg-cover bg-center  h-[600px]"
     style="background-image: url('/assets/home/purplebg.png')"
   >
-    <div class="ml-28 pt-24">
-      <p class="text-base text-white">150$ - 200$</p>
-      <h1 class="text-white font-nunito font-bold text-5xl my-4">
+    <div class="w-3/4 ml-28 pt-24 w-2/3 align-middle mt-16">
+      <p class="text-base text-white" appAnimateFromViewport [animationClass]="'animate-from-top'" [duration]="2">150$ - 200$</p>
+      <h1 appAnimateFromViewport [animationClass]="'animate-from-bottom-1'" [duration]="5" class="text-white font-nunito font-bold text-5xl my-4">
         Modern Chair
       </h1>
-      <p class="text-base text-white my-4">Relax in style with our premium</p>
-      <p class="text-base text-white my-4">armchairs - comfort redefiend</p>
-      <button class="bg-white text-black font-bold py-2 px-10 rounded-full">
+      <p appAnimateFromViewport [animationClass]="'animate-from-bottom-2'" class="text-base text-white my-4">Relax in style with our premium</p>
+      <p appAnimateFromViewport [animationClass]="'animate-from-bottom-3'" class="text-base text-white my-4">armchairs - comfort redefiend</p>
+      <button appAnimateFromViewport [animationClass]="'animate-from-bottom-4'" class="bg-white text-black font-bold py-2 px-10 rounded-full">
         Shop Now
       </button>
     </div>
+    <div class="w-4/5 mt-20">
+      <model-viewer 
+        src="assets/3dModels/showcase_armchairblack.glb" 
+        alt="A 3D model" 
+        camera-controls 
+        auto-rotate 
+        loading="eager"
+        camera-orbit="0deg 75deg 11m"
+        scale="4 4 4"
+        style="width: 100%; height: 400px;">
+      </model-viewer>
+    </div>
   </div>
 
-  <div class="grid grid-cols-4 gap-4 h-60 mb-10">
-    <div class="p-4 content-center h-full">
-      <img src="assets/home/chairs/chair1.png" alt="Wooden Drawer" />
+  <div class="grid grid-cols-4 gap-4">
+    <div class="p-4 content-center">
+      <img appFadeIn  src="assets/home/chairs/chair1.png" class="opacity-0 opacity-100 transition-opacity duration-500 scale-150 delay-0" alt="Wooden Drawer" />
     </div>
     <div class="p-4 content-center">
-      <img src="assets/home/chairs/chair2.png" alt="Modern Chair" />
+      <img appFadeIn src="assets/home/chairs/chair2.png" class="opacity-0 opacity-100 transition-opacity duration-500 scale-125 delay-100" alt="Modern Chair" />
     </div>
     <div class="p-4 content-center">
-      <img src="assets/home/chairs/chair3.png" alt="Modern Table" />
+      <img appFadeIn src="assets/home/chairs/chair3.png" class="opacity-0 opacity-100 transition-opacity duration-500 scale-125 delay-500" alt="Modern Table" />
     </div>
-    <div class="p-4 content-center">
-      <img src="assets/home/chairs/chair4.png" alt="Sofa" />
+    <div class="p-4 content-center" >
+      <img appFadeIn src="assets/home/chairs/chair4.png" class="opacity-0 opacity-100 transition-opacity duration-500 delay-1000" alt="Sofa" />
     </div>
   </div>
 
   <div class="grid grid-cols-4 grid-rows-2 h-full gap-0">
     <div class="col-span-2 row-span-2">
       <img
-        src="assets/home/desks/desk1.png"
+        appFadeIn
+        src="assets/home/desks/desk1.jpg"
         alt="Wooden Drawer"
-        class="h-full w-full object-cover"
+        class="h-full w-full object-cover opacity-0 opacity-100 transition-opacity duration-500 delay-1000"
       />
     </div>
     <div class="col-span-1 row-span-1">
       <img
-        src="assets/home/desks/desk2.png"
+        appFadeIn
+        src="assets/home/desks/desk2.jpg"
         alt="Modern Chair"
-        class="h-full w-full object-cover"
+        class="h-full w-full object-cover opacity-0 opacity-100 transition-opacity duration-500 delay-1000"
       />
     </div>
     <div class="col-span-1 row-span-1">
       <img
-        src="assets/home/desks/desk3.png"
+        appFadeIn
+        src="assets/home/desks/desk3.jpg"
         alt="Modern Table"
-        class="h-full w-full object-cover"
+        class="h-full w-full object-cover opacity-0 opacity-100 transition-opacity duration-500 delay-1000"
       />
     </div>
     <div class="col-span-1 row-span-1">
       <img
-        src="assets/home/desks/desk4.png"
+        appFadeIn
+        src="assets/home/desks/desk4.jpg"
         alt="Sofa"
-        class="h-full w-full object-cover"
+        class="h-full w-full object-cover opacity-0 opacity-100 transition-opacity duration-500 delay-1000"
       />
     </div>
     <div class="col-span-1 row-span-1">
       <img
-        src="assets/home/desks/desk5.png"
+        appFadeIn
+        src="assets/home/desks/desk5.jpg"
         alt="Armchair"
-        class="h-full w-full object-cover"
+        class="h-full w-full object-cover opacity-0 opacity-100 transition-opacity duration-500 delay-1000"
       />
     </div>
   </div>
@@ -74,30 +91,61 @@
     </p>
   </div>
 
-  <div class="grid grid-cols-2 h-40 w-full gap-0">
-    <div class="bg-fuchsia-500 flex items-center justify-center">
+  <div class="grid grid-cols-2 h-[550px] w-full gap-0">
+    <div class="bg-[#DBE2EF] flex items-center justify-center">
       <div class="ml-8">
-        <p class="text-white text-base">new collection</p>
-        <p class="text-white font-nunito font-bold text-4xl my-4">Wooden <br> Drawers</p>
-        <p class="text-white text-base underline underline-offset-4">see more</p>
+        <p appAnimateFromViewport [animationClass]="'animate-from-top'" class="text-white text-base">new collection</p>
+        <p appAnimateFromViewport [animationClass]="'animate-from-bottom-1'" class="text-white font-nunito font-bold text-4xl my-4">Modern <br> Beds</p>
+        <p appAnimateFromViewport [animationClass]="'animate-from-bottom-2'" class="text-white text-base underline underline-offset-4">see more</p>
       </div>
-      <img
+      
+      <!-- <img
+        appFadeIn
         src="assets/home/tables/table1.png"
         alt="Wooden Desk"
-        class="ml-auto h-[430px] w-[430px]"
-      />
+        class="w-96 "
+        
+      /> -->
+      <model-viewer 
+        src="assets/3dModels/blue_bed.glb" 
+        alt="A 3D model" 
+        camera-controls 
+        camera-orbit="0deg 75deg 4.5m"
+        auto-rotate 
+        style="width: 100%; height: 400px;">
+      </model-viewer>
     </div>
-    <div class="bg-fuchsia-700 flex items-center justify-center">
+    <div class="bg-[#112D4E] flex items-center justify-center">
       <div class="ml-8">
-        <p class="text-white text-base">new collection</p>
-        <p class="text-white font-nunito font-bold text-4xl my-4">Wooden <br> Drawers</p>
-        <p class="text-white text-base underline underline-offset-4">see more</p>
+        <p appAnimateFromViewport [animationClass]="'animate-from-top'"[duration]="5" class="text-white text-base">new collection</p>
+        <p appAnimateFromViewport [animationClass]="'animate-from-bottom-1'" class="text-white font-nunito font-bold text-4xl my-4">Wooden <br> Drawers</p>
+        <p appAnimateFromViewport [animationClass]="'animate-from-bottom-2'" class="text-white text-base underline underline-offset-4">see more</p>
       </div>
-      <img
-        src="assets/home/tables/table2.png"
-        alt="Modern Glass Table"
-        class="ml-auto"
-      />
+      <model-viewer 
+        src="assets/3dModels/caster_drawer.glb" 
+        alt="A 3D model" 
+        camera-controls 
+        auto-rotate 
+        loading="eager"
+        style="width: 100%; height: 400px;">
+      </model-viewer>
+    </div>
+
+  </div>
+
+  <div class="flex justify-center items-center min-h-screen mt-20">
+    <div class="w-4/5 mt-12 p-5">
+      <p class="text-center font-nunito font-bold text-4xl my-4 underline underline-offset-8">
+        best Sellers
+      </p>
+      <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+          @for (product of chairs; track $index) {
+              <app-product [height]="'200px'" [product]="product"></app-product>
+          }
+      </div>
     </div>
   </div>
+  
+
+
 </div>
