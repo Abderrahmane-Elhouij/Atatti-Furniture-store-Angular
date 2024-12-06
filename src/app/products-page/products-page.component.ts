@@ -11,6 +11,7 @@ import { ProductComponent } from './product/product.component';
 @Component({
   selector: 'app-products-page',
   imports: [MatSliderModule, CommonModule, MatListModule, MatCheckboxModule, ProductComponent],
+  standalone: true,
   templateUrl: './products-page.component.html',
   styleUrl: './products-page.component.css'
 })
@@ -18,22 +19,22 @@ export class ProductsPageComponent {
 
   private productsService = inject(MockDataService);
 
-  allProducts = this.productsService.getData(); 
+  allProducts = this.productsService.getData();
   seatings = this.allProducts.seatings;
   tables = this.allProducts.tables;
   beds = this.allProducts.bedRoom;
   storage = this.allProducts.storage;
 
-  chairs = this.seatings.chairs;  
+  chairs = this.seatings.chairs;
 
 ngOnInit(): void {
   //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
   //Add 'implements OnInit' to the class.
   console.log(this.chairs);
-  
-}  
 
-  filteredProducts: any[] = []; 
+}
+
+  filteredProducts: any[] = [];
 
 
   tagCategory: string = '';
@@ -41,7 +42,7 @@ ngOnInit(): void {
 
 
 
-  
+
   colors = [
     { name: 'Black', hex: '#000000', count: 37 },
     { name: 'Blue', hex: '#0000FF', count: 7 },
@@ -61,7 +62,7 @@ ngOnInit(): void {
       { name: 'rayon', count: 33 },
       { name: 'rayon', count: 81 },
       { name: 'linen', count: 84 },
-      
+
     ];
 
   fabrics = ['cotton', 'silk', 'wool', 'polyester', 'rayon', 'linen'];
@@ -116,7 +117,7 @@ ngOnInit(): void {
   // ];
 
   tags = ["seatings", "tables", "bedRoom", "storage"];
-  
+
 
   //Tag filter
   selectedTag: string | null = null;
@@ -125,7 +126,7 @@ ngOnInit(): void {
     this.selectedTag = this.selectedTag === tag ? null : tag;
   }
 
-  
+
 
 
   //Price Filter
@@ -136,7 +137,7 @@ ngOnInit(): void {
     const maxValue = event.value[1];
 
     console.log(minValue, maxValue);
-    
+
 
     this.priceRange = `£${minValue.toLocaleString()} - £${maxValue.toLocaleString()}`;
   }
@@ -167,7 +168,7 @@ ngOnInit(): void {
   }
 
   getFabricColor(fabricName: string): string {
-   
+
     switch (fabricName) {
       case 'Alpaca wollen fabric': return 'bg-gray-200';
       case 'Boiled wollen fabric': return 'bg-gray-400';
@@ -181,9 +182,9 @@ ngOnInit(): void {
       default: return 'bg-gray-300'; // Default color
     }
   }
-  
 
-  
+
+
   // flattenData(data: any) {
   //   this.allProducts = [];
   //   for (const category in data) {
@@ -200,8 +201,8 @@ ngOnInit(): void {
   // }
 
   filterProducts() {
-    
-    
+
+
 
   }
 

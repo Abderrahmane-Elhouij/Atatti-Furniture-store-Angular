@@ -9,6 +9,7 @@ import { AnimateFromViewportDirective } from '../animate-from-viewport.directive
 @Component({
   selector: 'app-home',
   imports: [ProductComponent, FadeInDirective, AnimateFromViewportDirective],
+  standalone: true,
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
   schemas: [CUSTOM_ELEMENTS_SCHEMA], // Add this line
@@ -17,12 +18,12 @@ export class HomeComponent {
 
   private productsService = inject(MockDataService);
 
-  allProducts = this.productsService.getData(); 
+  allProducts = this.productsService.getData();
   seatings = this.allProducts.seatings;
   tables = this.allProducts.tables;
   beds = this.allProducts.bedRoom;
   storage = this.allProducts.storage;
 
-  chairs = this.seatings.chairs; 
+  chairs = this.seatings.chairs;
 
 }

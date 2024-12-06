@@ -1,7 +1,8 @@
 import { Directive, ElementRef, Renderer2, OnInit } from '@angular/core';
 
 @Directive({
-  selector: '[appFadeIn]'
+  selector: '[appFadeIn]',
+  standalone: true,
 })
 export class FadeInDirective implements OnInit {
   constructor(private el: ElementRef, private renderer: Renderer2) {}
@@ -14,7 +15,7 @@ export class FadeInDirective implements OnInit {
           observer.unobserve(this.el.nativeElement);
         }
       },
-      { threshold: 0.1 } 
+      { threshold: 0.1 }
     );
 
     observer.observe(this.el.nativeElement);

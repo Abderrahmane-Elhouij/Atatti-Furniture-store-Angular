@@ -1,7 +1,8 @@
 import { Directive, ElementRef, Renderer2, Input, OnInit, OnDestroy } from '@angular/core';
 
 @Directive({
-  selector: '[appAnimateFromViewport]'
+  selector: '[appAnimateFromViewport]',
+  standalone: true,
 })
 export class AnimateFromViewportDirective implements OnInit, OnDestroy {
   @Input() animationClass: string = '';
@@ -12,20 +13,20 @@ export class AnimateFromViewportDirective implements OnInit, OnDestroy {
   constructor(private el: ElementRef, private renderer: Renderer2) {}
 
   ngOnInit() {
-    
-    this.renderer.setStyle(this.el.nativeElement, '--animation-duration', `${this.duration}s`); 
-    this.renderer.setStyle(this.el.nativeElement, 'transition-delay', '0s'); 
-    
-    
+
+    this.renderer.setStyle(this.el.nativeElement, '--animation-duration', `${this.duration}s`);
+    this.renderer.setStyle(this.el.nativeElement, 'transition-delay', '0s');
+
+
     this.observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-         
+
           this.renderer.addClass(this.el.nativeElement, this.animationClass);
         }
       });
     }, {
-      threshold: 0.5, 
+      threshold: 0.5,
     });
 
     // Start observing the element
@@ -33,7 +34,7 @@ export class AnimateFromViewportDirective implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    
+
     if (this.observer) {
       this.observer.disconnect();
     }

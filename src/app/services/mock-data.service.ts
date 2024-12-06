@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root', 
+  providedIn: 'root',
 })
 
 export class MockDataService {
-  
+
     private furnitureData = {
 
         seatings: {
@@ -1060,11 +1060,7 @@ export class MockDataService {
             }
           ]
         }
-
-
       };
-      
-  
 
   // Method to get all data
   getData() {
