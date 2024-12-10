@@ -1,0 +1,112 @@
+<div class="container mx-auto px-4 py-8">
+  <div class="flex flex-col lg:flex-row gap-8">
+    <!-- Image/3D Model Section -->
+    <div class="relative lg:w-1/2 bg-gray-100 rounded-md overflow-hidden">
+      <!-- Toggle Button -->
+      <button
+        class="absolute top-2 right-2 bg-white p-2 rounded-full shadow hover:bg-gray-200 z-10"
+        (click)="toggleView()"
+      >
+        <fa-icon [icon]="currentView === 'image' ? fa3DModel : faImage" />
+      </button>
+
+      <!-- Frame Container -->
+      <div class="w-full h-[525px] relative">
+        <!-- Image View -->
+        @if (currentView === 'image') {
+        <div class="w-full h-full">
+          <img
+            src="{{ testChair.image }}"
+            alt="675 Chair"
+            class="w-full h-full object-cover"
+          />
+        </div>
+        }
+
+        <!-- 3D Model View -->
+        @if (currentView === '3d') {
+        <model-viewer
+          src="assets/3dModels/showcase_armchair.glb"
+          alt="A 3D model"
+          camera-controls
+          camera-orbit="0deg 75deg 4.5m"
+          auto-rotate
+          class="w-full h-full"
+        ></model-viewer>
+        }
+      </div>
+    </div>
+
+    <!-- Details Section -->
+    <div class="lg:w-1/2">
+      <h1 class="text-3xl font-bold mb-2">{{ testChair.name }}</h1>
+      <div class="flex items-center gap-2">
+        <span class="text-yellow-400 text-xl">★★★★★</span>
+        <span class="text-gray-600">(11 Reviews)</span>
+      </div>
+      <p class="mt-4 text-gray-600">
+        {{ testChair.description }}
+        <a href="#" class="text-blue-500 hover:underline">Read more</a>
+      </p>
+
+      <!-- Options -->
+      <div class="mt-6">
+        <label class="block text-gray-800 font-medium mb-2"
+          >Select Finish:</label
+        >
+        <div class="flex gap-4">
+          <button
+            class="w-14 h-14 bg-[url('/assets/wood-oak.jpg')] bg-cover border rounded-md hover:shadow-lg"
+          ></button>
+          <button
+            class="w-14 h-14 bg-[url('/assets/wood-walnut.jpg')] bg-cover border rounded-md hover:shadow-lg"
+          ></button>
+        </div>
+      </div>
+
+      <div class="mt-4">
+        <label class="block text-gray-800 font-medium mb-2"
+          >Select Frame:</label
+        >
+        <div class="flex gap-4">
+          <button class="w-14 h-14 bg-black border rounded-md"></button>
+          <button class="w-14 h-14 bg-gray-400 border rounded-md"></button>
+        </div>
+      </div>
+
+      <div class="mt-4">
+        <label class="block text-gray-800 font-medium mb-2">
+          Select Upholstery:
+        </label>
+        <button class="py-1 px-2 bg-gray-100 border rounded-md hover:shadow-lg">
+          Fabric : Elum Light
+        </button>
+
+        <!-- Add to Cart Section -->
+        <div class="mt-4 flex items-center gap-4">
+          <button
+            class="text-black text-2xl px-4 py-2"
+            (click)="decreaseQuantity()"
+          >
+            -
+          </button>
+          <span class="text-lg font-medium border border-black px-2 py-0.5">
+            {{ quantity }}
+          </span>
+          <button
+            class="text-black text-2xl px-4 py-2"
+            (click)="increaseQuantity()"
+          >
+            +
+          </button>
+          <button
+            class="text-black border border-black px-3.5 py-1.5"
+            (click)="addToCart()"
+          >
+            Add to Cart
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,8 +1,8 @@
 import { Component, inject } from '@angular/core';
-import { ProductComponent } from '../products-page/product/product.component';
+import { ProductComponent } from '../products/product/product.component';
 import { MockDataService } from '../services/mock-data.service';
 import '@google/model-viewer';
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FadeInDirective } from '../fade-in.directive';
 import { AnimateFromViewportDirective } from '../animate-from-viewport.directive';
 

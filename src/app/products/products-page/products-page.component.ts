@@ -1,11 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component, Inject, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MatSliderModule } from '@angular/material/slider';
-import { FabricOption } from '../app.model';
+import { FabricOption } from '../../app.model';
 import { MatListModule } from '@angular/material/list';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MockDataService } from '../services/mock-data.service';
-import { ProductComponent } from './product/product.component';
+import { MockDataService } from '../../services/mock-data.service';
+import { ProductComponent } from '../product/product.component';
 
 
 @Component({
@@ -27,12 +27,12 @@ export class ProductsPageComponent {
 
   chairs = this.seatings.chairs;
 
-ngOnInit(): void {
-  //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-  //Add 'implements OnInit' to the class.
-  console.log(this.chairs);
+  ngOnInit(): void {
+    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+    //Add 'implements OnInit' to the class.
+    console.log(this.chairs);
 
-}
+  }
 
   filteredProducts: any[] = [];
 
@@ -54,16 +54,16 @@ ngOnInit(): void {
     { name: 'Silver', hex: '#C0C0C0', count: 24 },
   ];
 
-    fabricOptions: FabricOption[] = [
-      { name: 'cotton', count: 5 },
-      { name: 'silk', count: 2 },
-      { name: 'wool', count: 93 },
-      { name: 'polyester', count: 23 },
-      { name: 'rayon', count: 33 },
-      { name: 'rayon', count: 81 },
-      { name: 'linen', count: 84 },
+  fabricOptions: FabricOption[] = [
+    { name: 'cotton', count: 5 },
+    { name: 'silk', count: 2 },
+    { name: 'wool', count: 93 },
+    { name: 'polyester', count: 23 },
+    { name: 'rayon', count: 33 },
+    { name: 'rayon', count: 81 },
+    { name: 'linen', count: 84 },
 
-    ];
+  ];
 
   fabrics = ['cotton', 'silk', 'wool', 'polyester', 'rayon', 'linen'];
 
