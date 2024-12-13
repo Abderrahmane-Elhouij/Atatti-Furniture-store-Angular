@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 import { MatSliderModule } from '@angular/material/slider';
 import { FabricOption } from '../../app.model';
 import { MatListModule } from '@angular/material/list';
@@ -27,6 +27,8 @@ export class ProductsPageComponent {
 
   chairs = this.seatings.chairs;
 
+  drawers = this.storage.drawers;
+
   ngOnInit(): void {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
@@ -34,11 +36,6 @@ export class ProductsPageComponent {
 
   }
 
-  filteredProducts: any[] = [];
-
-
-  tagCategory: string = '';
-  tagType: string = '';
 
 
 
@@ -60,77 +57,99 @@ export class ProductsPageComponent {
     { name: 'wool', count: 93 },
     { name: 'polyester', count: 23 },
     { name: 'rayon', count: 33 },
-    { name: 'rayon', count: 81 },
     { name: 'linen', count: 84 },
+    { name: 'wood', count: 84 },
 
   ];
 
-  fabrics = ['cotton', 'silk', 'wool', 'polyester', 'rayon', 'linen'];
-
-  // tags = [
-  //   "rustic",
-  //   "dining table",
-  //   "wood",
-  //   "metal",
-  //   "dining room",
-  //   "modern",
-  //   "unique",
-  //   "minimalist",
-  //   "glass",
-  //   "luxury",
-  //   "velvet",
-  //   "desk",
-  //   "computer",
-  //   "office",
-  //   "compact",
-  //   "classic",
-  //   "oak",
-  //   "vintage",
-  //   "walnut",
-  //   "white",
-  //   "writing",
-  //   "storage",
-  //   "cabinet",
-  //   "drawer",
-  //   "mobile",
-  //   "chest",
-  //   "metal",
-  //   "rattan",
-  //   "adjustable",
-  //   "shelving",
-  //   "5-tier",
-  //   "corner",
-  //   "industrial",
-  //   "modular",
-  //   "rustic", // Added from diningTables
-  //   "open",
-  //   "stylish",
-  //   "unique", // Added from shelving
-  //   "bed",
-  //   "tufted",
-  //   "blue",
-  //   "minimalist", // Added from beds
-  //   "black",
-  //   "romantic",
-  //   "elegant",
-  //   "plush"
-  // ];
-
-  tags = ["seatings", "tables", "bedRoom", "storage"];
+  tags = ["seating", "storage", "chair", "drawer", "bed", "bedside table", "coffee table", "dining table", "desk"];
 
 
   //Tag filter
+
   selectedTag: string | null = null;
+  selectedColor: string | null = null;
+  selectedFabric: string | null = null;
+  priceRange: string = '£0 - £900';
+
+  paramTag = input.required();
+
+
+  // if(paramTag){
+  //   this.selectedTag = paramTag;
+  //   this.filteredProducts = this.filterAndSortProducts(this.allProducts, this.selectedTag, this.selectedColor, this.selectedFabric);
+
+  // }
+
+  extractPriceRange(priceRange: string): [number, number] {
+    const priceMatch = priceRange.match(/£(\d+(?:,\d{3})*(?:\.\d+)?)/g);
+    if (priceMatch) {
+      const [min, max] = priceMatch.map(price => parseFloat(price.replace(/[,£]/g, '')));
+      return [min, max];
+    }
+    return [0, Infinity]; // Default range if parsing fails
+  }
+
+
+  filteredProducts: any[] = this.filterAndSortProducts(this.allProducts, this.selectedTag, this.selectedColor, this.selectedFabric);;
+
 
   selectTag(tag: string): void {
     this.selectedTag = this.selectedTag === tag ? null : tag;
+    console.log(this.selectedTag);
+    this.filteredProducts = this.filterAndSortProducts(this.allProducts, this.selectedTag, this.selectedColor, this.selectedFabric);
+    
   }
+
+
+   
+
+
+  filterAndSortProducts(
+    products: any,
+    selectedTag: string | null,
+    selectedColor: string | null,
+    selectedFabric: string | null
+  ): any[] {
+    const allProducts: any[] = [];
+    const [minPrice, maxPrice] = this.extractPriceRange(this.priceRange);
+  
+    // Recursive function to collect all products
+    function collectProducts(obj: any) {
+      if (Array.isArray(obj)) {
+        allProducts.push(...obj);
+      } else if (typeof obj === "object" && obj !== null) {
+        Object.values(obj).forEach(value => collectProducts(value));
+      }
+    }
+  
+    collectProducts(products);
+  
+    if (selectedTag || selectedColor || selectedFabric || this.priceRange) {
+      // Filter products by the provided criteria
+      return allProducts.filter(item => {
+        const tags = item.tags || [];
+        const matchesTag = selectedTag ? tags.includes(selectedTag) : true;
+        const matchesColor = selectedColor ? tags.includes(selectedColor) : true;
+        const matchesFabric = selectedFabric ? tags.includes(selectedFabric) : true;
+        const matchesPrice = item.price >= minPrice && item.price <= maxPrice;
+  
+        return matchesTag && matchesColor && matchesFabric && matchesPrice;
+      });
+    } else {
+      // Shuffle the array randomly if no criteria are provided
+      return allProducts.sort(() => Math.random() - 0.5);
+    }
+  }
+
+
+  
+  
 
 
 
 
   //Price Filter
-  priceRange: string = '£0 - £2,000';
 
   onPriceChange(event: any) {
     const minValue = event.value[0];
@@ -144,27 +163,26 @@ export class ProductsPageComponent {
 
 
   //Color filter
-  selectedColors: string[] = [];
+  
 
 
-  toggleColor(color: string) {
-    if (this.selectedColors.includes(color)) {
-      this.selectedColors = this.selectedColors.filter(c => c !== color);
-    } else {
-      this.selectedColors.push(color);
-    }
+  // Toggle the selected color
+  toggleColor(colorName: string) {
+    this.selectedColor = this.selectedColor === colorName ? null : colorName;
+    console.log('Selected color:', this.selectedColor); // Optional: Debug log
+    this.filteredProducts = this.filterAndSortProducts(this.allProducts, this.selectedTag, this.selectedColor, this.selectedFabric);
+    
   }
 
 
   //Fabric filter
-  selectedFabrics: string[] = [];
 
-  toggleFabric(fabric: string) {
-    if (this.selectedFabrics.includes(fabric)) {
-      this.selectedFabrics = this.selectedFabrics.filter(f => f !== fabric);
-    } else {
-      this.selectedFabrics.push(fabric);
-    }
+  // Function to set the selected fabric
+  toggleFabric(fabricName: string) {
+    this.selectedFabric = this.selectedFabric === fabricName ? null : fabricName;
+    console.log('Selected color:', this.selectedColor); // Optional: Debug log
+    this.filteredProducts = this.filterAndSortProducts(this.allProducts, this.selectedTag, this.selectedColor, this.selectedFabric);
+    
   }
 
   getFabricColor(fabricName: string): string {
@@ -182,43 +200,6 @@ export class ProductsPageComponent {
       default: return 'bg-gray-300'; // Default color
     }
   }
-
-
-
-  // flattenData(data: any) {
-  //   this.allProducts = [];
-  //   for (const category in data) {
-  //     if (this.tagCategory && category !== this.tagCategory) {
-  //       continue; // Skip categories that don't match the selected tagCategory
-  //     }
-  //     for (const productType in data[category]) {
-  //       if (this.tagType && productType !== this.tagType) {
-  //         continue; // Skip product types that don't match the selected tagType
-  //       }
-  //       this.allProducts = this.allProducts.concat(data[category][productType]);
-  //     }
-  //   }
-  // }
-
-  filterProducts() {
-
-
-
-  }
-
-  // // Methods to handle tagCategory and tagType selection
-  // selectTagCategory(category: string) {
-  //   this.tagCategory = category;
-  //   this.tagType = ''; // Reset tagType when tagCategory changes
-  //   this.flattenData(this.mockDataService.data); // Re-flatten data based on new tagCategory
-  //   this.applyFilters();
-  // }
-
-  // selectTagType(type: string) {
-  //   this.tagType = type;
-  //   this.flattenData(this.mockDataService.data); // Re-flatten data based on new tagType
-  //   this.applyFilters();
-  // }
 
 
 }

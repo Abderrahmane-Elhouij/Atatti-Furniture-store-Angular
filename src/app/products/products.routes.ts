@@ -11,7 +11,7 @@ export const routes: Routes = [
         component: ProductsPageComponent
       },
       {
-        path: 'chair',
+        path: ':id',
         component: OneProductPageComponent
       }
     ]

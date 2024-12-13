@@ -1,43 +1,43 @@
 <div>
   <div
-    class="flex bg-cover bg-center h-[600px]"
+    class="flex justify-around bg-cover bg-center h-[600px]"
     style="background-image: url('/assets/home/purplebg.png')"
   >
     <div class="w-3/4 ml-28 pt-24 align-middle mt-16">
       <p
-        class="text-base text-white"
+        class="opacity-0 text-base text-white"
         appAnimateFromViewport
-        [animationClass]="'animate-from-top'"
+        [animationClass]="'animate-from-bottom-1'"
         [duration]="2"
       >
         150$ - 200$
       </p>
       <h1
         appAnimateFromViewport
-        [animationClass]="'animate-from-bottom-1'"
+        [animationClass]="'animate-from-bottom-2'"
         [duration]="5"
-        class="text-white font-nunito font-bold text-5xl my-4"
+        class="opacity-0 text-white font-nunito font-bold text-5xl my-4"
       >
         Modern Chair
       </h1>
       <p
         appAnimateFromViewport
-        [animationClass]="'animate-from-bottom-2'"
-        class="text-base text-white my-4"
+        [animationClass]="'animate-from-bottom-3'"
+        class="opacity-0 text-base text-white my-4"
       >
         Relax in style with our premium
       </p>
       <p
         appAnimateFromViewport
-        [animationClass]="'animate-from-bottom-3'"
-        class="text-base text-white my-4"
+        [animationClass]="'animate-from-bottom-4'"
+        class="opacity-0 text-base text-white my-4"
       >
         armchairs - comfort redefiend
       </p>
       <button
         appAnimateFromViewport
-        [animationClass]="'animate-from-bottom-4'"
-        class="bg-white text-black font-bold py-2 px-10 rounded-full"
+        [animationClass]="'animate-from-bottom-5'"
+        class="opacity-0 bg-white text-black font-bold py-2 px-10 rounded-full"
       >
         Shop Now
       </button>
@@ -52,6 +52,7 @@
         camera-orbit="0deg 75deg 11m"
         scale="4 4 4"
         style="width: 100%; height: 400px"
+        id="model"
       >
       </model-viewer>
     </div>
@@ -60,77 +61,85 @@
   <div class="grid grid-cols-4 gap-4">
     <div class="p-4 content-center">
       <img
-        appFadeIn
+        appAnimateFromViewport
+        [animationClass]="'animate-fade-in-1'"
         src="assets/home/chairs/chair1.png"
-        class="opacity-100 transition-opacity duration-500 scale-150 delay-0"
+        class="opacity-0 scale-150"
         alt="Wooden Drawer"
       />
     </div>
     <div class="p-4 content-center">
       <img
-        appFadeIn
+        appAnimateFromViewport
+        [animationClass]="'animate-fade-in-2'"
         src="assets/home/chairs/chair2.png"
-        class="opacity-100 transition-opacity duration-500 scale-125 delay-100"
+        class="opacity-0 scale-125"
         alt="Modern Chair"
       />
     </div>
     <div class="p-4 content-center">
       <img
-        appFadeIn
+        appAnimateFromViewport
+        [animationClass]="'animate-fade-in-3'"
         src="assets/home/chairs/chair3.png"
-        class="opacity-100 transition-opacity duration-500 scale-125 delay-500"
+        class="opacity-0 scale-125"
         alt="Modern Table"
       />
     </div>
     <div class="p-4 content-center">
       <img
-        appFadeIn
+        appAnimateFromViewport
+        [animationClass]="'animate-fade-in-4'"
         src="assets/home/chairs/chair4.png"
-        class="opacity-100 transition-opacity duration-500 delay-1000"
+        class="opacity-0"
         alt="Sofa"
       />
     </div>
   </div>
-
-  <div class="grid grid-cols-4 grid-rows-2 h-full gap-0">
+  @defer () {<div class="grid grid-cols-4 grid-rows-2 h-full gap-0">
     <div class="col-span-2 row-span-2">
       <img
-        appFadeIn
+        appAnimateFromViewport
+        [animationClass]="'animate-fade-in-1'"
         src="assets/home/desks/desk1.jpg"
         alt="Wooden Drawer"
-        class="h-full w-full object-cover opacity-100 transition-opacity duration-500 delay-1000"
+        class="h-full w-full object-cover opacity-0"
       />
     </div>
     <div class="col-span-1 row-span-1">
       <img
-        appFadeIn
+        appAnimateFromViewport
+        [animationClass]="'animate-fade-in-2'"
         src="assets/home/desks/desk2.jpg"
         alt="Modern Chair"
-        class="h-full w-full object-cover opacity-100 transition-opacity duration-500 delay-1000"
+        class="h-full w-full object-cover opacity-0"
       />
     </div>
     <div class="col-span-1 row-span-1">
       <img
-        appFadeIn
+      appAnimateFromViewport
+      [animationClass]="'animate-fade-in-2'"
         src="assets/home/desks/desk3.jpg"
         alt="Modern Table"
-        class="h-full w-full object-cover opacity-100 transition-opacity duration-500 delay-1000"
+        class="h-full w-full object-cover opacity-0"
       />
     </div>
     <div class="col-span-1 row-span-1">
       <img
-        appFadeIn
+        appAnimateFromViewport
+        [animationClass]="'animate-fade-in-3'"
         src="assets/home/desks/desk4.jpg"
         alt="Sofa"
-        class="h-full w-full object-cover opacity-100 transition-opacity duration-500 delay-1000"
+        class="h-full w-full object-cover opacity-0"
       />
     </div>
     <div class="col-span-1 row-span-1">
       <img
-        appFadeIn
+        appAnimateFromViewport
+        [animationClass]="'animate-fade-in-3'"
         src="assets/home/desks/desk5.jpg"
         alt="Armchair"
-        class="h-full w-full object-cover opacity-100 transition-opacity duration-500 delay-1000"
+        class="h-full w-full object-cover opacity-0"
       />
     </div>
   </div>
@@ -139,6 +148,11 @@
       Shop collections
     </p>
   </div>
+}@placeholder {
+  <p>huh</p>
+
+}
+  
 
   <div class="grid grid-cols-2 h-[550px] w-full gap-0">
     <div class="bg-[#DBE2EF] flex items-center justify-center">
@@ -146,14 +160,14 @@
         <p
           appAnimateFromViewport
           [animationClass]="'animate-from-top'"
-          class="text-white text-base"
+          class="text-white opacity-0 text-base"
         >
           new collection
         </p>
         <p
           appAnimateFromViewport
           [animationClass]="'animate-from-bottom-1'"
-          class="text-white font-nunito font-bold text-4xl my-4"
+          class="text-white opacity-0 font-nunito font-bold text-4xl my-4"
         >
           Modern <br />
           Beds
@@ -161,7 +175,7 @@
         <p
           appAnimateFromViewport
           [animationClass]="'animate-from-bottom-2'"
-          class="text-white text-base underline underline-offset-4"
+          class="text-white opacity-0 text-base underline underline-offset-4"
         >
           see more
         </p>
@@ -182,6 +196,7 @@
         camera-orbit="0deg 75deg 4.5m"
         auto-rotate
         style="width: 100%; height: 400px"
+        id="model"
       >
       </model-viewer>
       }@placeholder {
@@ -194,14 +209,14 @@
           appAnimateFromViewport
           [animationClass]="'animate-from-top'"
           [duration]="5"
-          class="text-white text-base"
+          class="text-white text-base opacity-0"
         >
           new collection
         </p>
         <p
           appAnimateFromViewport
           [animationClass]="'animate-from-bottom-1'"
-          class="text-white font-nunito font-bold text-4xl my-4"
+          class="text-white font-nunito font-bold text-4xl my-4 opacity-0"
         >
           Wooden <br />
           Drawers
@@ -209,7 +224,7 @@
         <p
           appAnimateFromViewport
           [animationClass]="'animate-from-bottom-2'"
-          class="text-white text-base underline underline-offset-4"
+          class="text-white text-base underline underline-offset-4 opacity-0"
         >
           see more
         </p>
@@ -222,6 +237,7 @@
         auto-rotate
         loading="eager"
         style="width: 100%; height: 400px"
+        id="model"
       >
       </model-viewer>
       }@placeholder {
@@ -240,7 +256,7 @@
       <div
         class="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8"
       >
-        @for (product of chairs; track $index) {
+        @for (product of bestSellerProducts; track $index) {
         <app-product [height]="'200px'" [product]="product"></app-product>
         }
       </div>

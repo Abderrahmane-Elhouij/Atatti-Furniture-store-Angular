@@ -1,5 +1,27 @@
 import { Injectable } from '@angular/core';
 
+interface Product {
+    id: number;
+    name: string;
+    description: string;
+    price: number;
+    tags: string[];
+    image: string;
+    threeDModel: string;
+    quantity: number;
+  }
+  
+interface Subcategories {
+    [key: string]: Product[];
+  }
+  
+interface FurnitureData {
+    seatings: Subcategories;
+    tables: Subcategories;
+    storage: Subcategories;
+  }
+
+
 @Injectable({
   providedIn: 'root',
 })
@@ -1066,5 +1088,38 @@ export class MockDataService {
   getData() {
     return this.furnitureData;
   }
+
+
+  getProductById(id: number): any | null {
+    // Array to store the product if found
+    let foundProduct: any | null = null;
+  
+    // Recursive function to search for the product
+    function collectAndFind(obj: any) {
+      if (Array.isArray(obj)) {
+        // Check if the product exists in the array
+        const product = obj.find((item) => item.id === id);
+        if (product) {
+          foundProduct = product;
+        }
+      } else if (typeof obj === "object" && obj !== null) {
+        // Recursively check each value of the object
+        Object.values(obj).forEach((value) => {
+          if (!foundProduct) {
+            collectAndFind(value);
+          }
+        });
+      }
+    }
+  
+    // Start the recursive search
+    collectAndFind(this.furnitureData);
+  
+    // Return the found product or null if not found
+    return foundProduct;
+  }
+  
+  
+
 
 }

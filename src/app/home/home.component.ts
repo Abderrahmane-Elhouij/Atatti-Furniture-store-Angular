@@ -18,12 +18,34 @@ export class HomeComponent {
 
   private productsService = inject(MockDataService);
 
-  allProducts = this.productsService.getData();
-  seatings = this.allProducts.seatings;
-  tables = this.allProducts.tables;
-  beds = this.allProducts.bedRoom;
-  storage = this.allProducts.storage;
 
-  chairs = this.seatings.chairs;
+  products = this.productsService.getData();
+
+  bestSellerProducts = this.bestSellerData();
+  
+  bestSellerData() {
+    const allProducts: any[] = [];
+  
+    function collectProducts(obj: any) {
+      if (Array.isArray(obj)) {
+        allProducts.push(...obj);
+      } else if (typeof obj === "object" && obj !== null) {
+        Object.values(obj).forEach(value => collectProducts(value));
+      }
+    }
+  
+    collectProducts(this.products);
+  
+    // Manually select specific items by their indices
+    const selectedIndices = [0, 7, 14, 19, 25, 31, 40, 70];  // Indices for 1st, 8th, 15th, 20th items
+    const selectedProducts = selectedIndices.map(index => allProducts[index]).filter(Boolean);
+  
+    return selectedProducts;
+  }
+  
+  
+
+
+
 
 }

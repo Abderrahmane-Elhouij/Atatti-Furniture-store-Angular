@@ -12,3 +12,8 @@ body { margin: 0; font-family: 'Nunito', "Helvetica Neue", sans-serif; }
 model-viewer::part(loading-indicator) {
     display: none;
   }
+
+  #model {
+    --progress-bar-color: none;
+    --progress-bar-height: 0px;
+    }

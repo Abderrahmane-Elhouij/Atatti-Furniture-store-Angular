@@ -1,6 +1,6 @@
 @if (true) {
-
-  <div class="relative group">
+  
+  <div class="relative group hover:cursor-pointer" [routerLink]="['/products', product.id]" routerLinkActive="router-link-active" >
     <img src="{{ product.image }}" alt="{{ product.name }}" class="w-full h-[{{height}}] object-cover"> 
     <div *ngIf="product.quantity" class="absolute top-0 left-0 bg-blue-700 text-white px-2 py-0.5 rounded-br-lg">
       <span class="text-sm">-{{ product.quantity }}%</span>
