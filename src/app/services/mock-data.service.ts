@@ -39,7 +39,7 @@ export class MockDataService {
                 price: 229.99,
                 tags: ["leather", "chair", "stylish", "seating"],
                 image: "/assets/images/lether_chair.jpg",
-                threeDModel: "/path/to/lether_chair_model.glb",
+                threeDModel: "/assets/3dModels/lether_chair_model.glb",
                 quantity: 12
             },
             {
@@ -49,7 +49,7 @@ export class MockDataService {
                 price: 179.99,
                 tags: ["office", "chair", "ergonomic", "seating"],
                 image: "/assets/images/office_chair.jpg",
-                threeDModel: "/path/to/office_chair_model.glb",
+                threeDModel: "/assets/3dModels/office_chair_model.glb",
                 quantity: 15
             },
             {
@@ -59,7 +59,7 @@ export class MockDataService {
                 price: 249.99,
                 tags: ["modern", "chair", "office", "seating"],
                 image: "/assets/images/miro_office_chair.jpg",
-                threeDModel: "/path/to/miro_office_chair_model.glb",
+                threeDModel: "/assets/3dModels/miro_office_chair_model.glb",
                 quantity: 8
             },
             {
@@ -69,7 +69,7 @@ export class MockDataService {
                 price: 199.99,
                 tags: ["modern", "chair", "office", "seating"],
                 image: "/assets/images/bloom_office_chair.jpg",
-                threeDModel: "/path/to/bloom_office_chair_model.glb",
+                threeDModel: "/assets/3dModels/bloom_office_chair_model.glb",
                 quantity: 10
             },
             {
@@ -79,7 +79,7 @@ export class MockDataService {
                 price: 149.99,
                 tags: ["modern", "chair", "dining", "seating"],
                 image: "/assets/images/porto_chair.jpg",
-                threeDModel: "/path/to/porto_chair_model.glb",
+                threeDModel: "/assets/3dModels/porto_chair_model.glb",
                 quantity: 18
             },
             {
@@ -89,7 +89,7 @@ export class MockDataService {
                 price: 329.99,
                 tags: ["modern", "chair", "office", "seating"],
                 image: "/assets/images/atrium_office_chair.jpg",
-                threeDModel: "/path/to/atrium_office_chair_model.glb",
+                threeDModel: "/assets/3dModels/atrium_office_chair_model.glb",
                 quantity: 6
             },
             {
@@ -99,7 +99,7 @@ export class MockDataService {
                 price: 129.99,
                 tags: ["modern", "chair", "outdoor", "seating"],
                 image: "/assets/images/lawn_chair.jpg",
-                threeDModel: "/path/to/lawn_chair_model.glb",
+                threeDModel: "/assets/3dModels/lawn_chair_model.glb",
                 quantity: 20
             },
             {
@@ -109,7 +109,7 @@ export class MockDataService {
                 price: 299.99,
                 tags: ["modern", "chair", "stylish", "seating"],
                 image: "/assets/images/bontempi_mood_chair.jpg",
-                threeDModel: "/path/to/bontempi_mood_chair_model.glb",
+                threeDModel: "/assets/3dModels/bontempi_mood_chair_model.glb",
                 quantity: 9
             },
             {
@@ -119,7 +119,7 @@ export class MockDataService {
                 price: 169.99,
                 tags: ["modern", "chair", "dining", "seating"],
                 image: "/assets/images/calibre_dining_chair.jpg",
-                threeDModel: "/path/to/calibre_dining_chair_model.glb",
+                threeDModel: "/assets/3dModels/calibre_dining_chair_model.glb",
                 quantity: 14
             },
             {
@@ -129,7 +129,7 @@ export class MockDataService {
                 price: 199.99,
                 tags: ["modern", "chair", "versatile", "seating"],
                 image: "/assets/images/visu_chair.jpg",
-                threeDModel: "/path/to/visu_chair_model.glb",
+                threeDModel: "/assets/3dModels/visu_chair_model.glb",
                 quantity: 11
             }
         ],
@@ -141,7 +141,7 @@ export class MockDataService {
               price: 399.99,
               tags: ["modern", "sofa", "comfortable", "seating"],
               image: "/assets/images/fermoy_sofa.jpg",
-              threeDModel: "/path/to/fermoy_sofa_model.glb",
+              threeDModel: "/assets/3dModels/fermoy_sofa_model.glb",
               quantity: 12
           },
           {
@@ -151,7 +151,7 @@ export class MockDataService {
               price: 299.99,
               tags: ["modern", "sofa", "minimalist", "seating"],
               image: "/assets/images/grade_sofa.jpg",
-              threeDModel: "/path/to/grade_sofa_model.glb",
+              threeDModel: "/assets/3dModels/grade_sofa_model.glb",
               quantity: 10
           },
           {
@@ -161,7 +161,7 @@ export class MockDataService {
               price: 499.99,
               tags: ["luxury", "sofa", "velvet", "seating"],
               image: "/assets/images/likestone_sofa.jpg",
-              threeDModel: "/path/to/likestone_sofa_model.glb",
+              threeDModel: "/assets/3dModels/likestone_sofa_model.glb",
               quantity: 8
           },
           {
@@ -171,7 +171,7 @@ export class MockDataService {
               price: 349.99,
               tags: ["modern", "sofa", "unique", "seating"],
               image: "/assets/images/moonlight_sofa.jpg",
-              threeDModel: "/path/to/moonlight_sofa_model.glb",
+              threeDModel: "/assets/3dModels/moonlight_sofa_model.glb",
               quantity: 15
           },
           {
@@ -181,7 +181,7 @@ export class MockDataService {
               price: 429.99,
               tags: ["modern", "sofa", "modular", "seating"],
               image: "/assets/images/squary_sofa.jpg",
-              threeDModel: "/path/to/squary_sofa_model.glb",
+              threeDModel: "/assets/3dModels/squary_sofa_model.glb",
               quantity: 10
           },
           {
@@ -191,7 +191,7 @@ export class MockDataService {
               price: 329.99,
               tags: ["modern", "sofa", "mid-century", "seating"],
               image: "/assets/images/taipei_sofa.jpg",
-              threeDModel: "/path/to/taipei_sofa_model.glb",
+              threeDModel: "/assets/3dModels/taipei_sofa_model.glb",
               quantity: 12
           },
           {
@@ -201,7 +201,7 @@ export class MockDataService {
               price: 299.99,
               tags: ["modern", "sofa", "minimalist", "seating"],
               image: "/assets/images/Takt_C4_sofa.jpg",
-              threeDModel: "/path/to/Takt_C4_sofa_model.glb",
+              threeDModel: "/assets/3dModels/Takt_C4_sofa_model.glb",
               quantity: 14
           }
       ],
@@ -213,7 +213,7 @@ export class MockDataService {
             price: 249.99,
             tags: ["outdoor", "armchair", "durable", "seating"],
             image: "/assets/images/alma_outdoor_armchair.jpg",
-            threeDModel: "/path/to/alma_outdoor_armchair_model.glb",
+            threeDModel: "/assets/3dModels/alma_outdoor_armchair_model.glb",
             quantity: 15
         },
         {
@@ -223,7 +223,7 @@ export class MockDataService {
             price: 299.99,
             tags: ["modern", "armchair", "comfortable", "seating"],
             image: "/assets/images/bilbao_armchair.jpg",
-            threeDModel: "/path/to/bilbao_armchair_model.glb",
+            threeDModel: "/assets/3dModels/bilbao_armchair_model.glb",
             quantity: 10
         },
         {
@@ -233,7 +233,7 @@ export class MockDataService {
             price: 199.99,
             tags: ["classic", "armchair", "comfortable", "seating"],
             image: "/assets/images/classic_armchair.jpg",
-            threeDModel: "/path/to/classic_armchair_model.glb",
+            threeDModel: "/assets/3dModels/classic_armchair_model.glb",
             quantity: 12
         },
         {
@@ -243,7 +243,7 @@ export class MockDataService {
             price: 229.99,
             tags: ["modern", "armchair", "colorful", "seating"],
             image: "/assets/images/daisy_armchair.jpg",
-            threeDModel: "/path/to/daisy_armchair_model.glb",
+            threeDModel: "/assets/3dModels/daisy_armchair_model.glb",
             quantity: 8
         },
         {
@@ -253,7 +253,7 @@ export class MockDataService {
             price: 179.99,
             tags: ["modern", "armchair", "minimalist", "seating"],
             image: "/assets/images/gamma_armchair.jpg",
-            threeDModel: "/path/to/gamma_armchair_model.glb",
+            threeDModel: "/assets/3dModels/gamma_armchair_model.glb",
             quantity: 18
         },
         {
@@ -263,7 +263,7 @@ export class MockDataService {
             price: 399.99,
             tags: ["luxury", "armchair", "leather", "seating"],
             image: "/assets/images/leather_armchair.jpg",
-            threeDModel: "/path/to/leather_armchair_model.glb",
+            threeDModel: "/assets/3dModels/leather_armchair_model.glb",
             quantity: 6
         },
         {
@@ -273,7 +273,7 @@ export class MockDataService {
             price: 279.99,
             tags: ["modern", "armchair", "stylish", "seating"],
             image: "/assets/images/modern_armchair.jpg",
-            threeDModel: "/path/to/modern_armchair_model.glb",
+            threeDModel: "/assets/3dModels/modern_armchair_model.glb",
             quantity: 14
         },
         {
@@ -283,7 +283,7 @@ export class MockDataService {
             price: 229.99,
             tags: ["modern", "armchair", "versatile", "seating"],
             image: "/assets/images/officina_armchair.jpg",
-            threeDModel: "/path/to/officina_armchair_model.glb",
+            threeDModel: "/assets/3dModels/officina_armchair_model.glb",
             quantity: 11
         },
         {
@@ -293,7 +293,7 @@ export class MockDataService {
             price: 329.99,
             tags: ["modern", "armchair", "unique", "seating"],
             image: "/assets/images/rotatus_armchair.jpg",
-            threeDModel: "/path/to/rotatus_armchair_model.glb",
+            threeDModel: "/assets/3dModels/rotatus_armchair_model.glb",
             quantity: 9
         },
         {
@@ -303,7 +303,7 @@ export class MockDataService {
             price: 249.99,
             tags: ["modern", "armchair", "classic", "seating"],
             image: "/assets/images/siena_armchair.jpg",
-            threeDModel: "/path/to/siena_armchair_model.glb",
+            threeDModel: "/assets/3dModels/siena_armchair_model.glb",
             quantity: 16
         }
     ]
@@ -318,7 +318,7 @@ export class MockDataService {
                 price: 99.99,
                 tags: ["modern", "bedside table", "rounded", "storage"],
                 image: "/assets/images/arrondi_bedSide_table.jpg",
-                threeDModel: "/path/to/arrondi_bedSide_table_model.glb",
+                threeDModel: "/assets/3dModels/arrondi_bedSide_table_model.glb",
                 quantity: 15
             },
             {
@@ -328,7 +328,7 @@ export class MockDataService {
                 price: 89.99,
                 tags: ["modern", "bedside table", "minimalist", "storage"],
                 image: "/assets/images/atik_bedSide_table.jpg",
-                threeDModel: "/path/to/atik_bedSide_table_model.glb",
+                threeDModel: "/assets/3dModels/atik_bedSide_table_model.glb",
                 quantity: 10
             },
             {
@@ -338,7 +338,7 @@ export class MockDataService {
                 price: 129.99,
                 tags: ["classic", "bedside table", "wood", "storage"],
                 image: "/assets/images/brownWood_bedSide_table.jpg",
-                threeDModel: "/path/to/brownWood_bedSide_table_model.glb",
+                threeDModel: "/assets/3dModels/brownWood_bedSide_table_model.glb",
                 quantity: 12
             },
             {
@@ -348,7 +348,7 @@ export class MockDataService {
                 price: 149.99,
                 tags: ["modern", "bedside table", "unique", "storage"],
                 image: "/assets/images/drum_bedSide_table.jpg",
-                threeDModel: "/path/to/drum_bedSide_table_model.glb",
+                threeDModel: "/assets/3dModels/drum_bedSide_table_model.glb",
                 quantity: 8
             },
             {
@@ -358,7 +358,7 @@ export class MockDataService {
                 price: 119.99,
                 tags: ["modern", "bedside table", "versatile", "storage"],
                 image: "/assets/images/escaler_bedSide_table.jpg",
-                threeDModel: "/path/to/escaler_bedSide_table_model.glb",
+                threeDModel: "/assets/3dModels/escaler_bedSide_table_model.glb",
                 quantity: 18
             },
             {
@@ -368,7 +368,7 @@ export class MockDataService {
                 price: 199.99,
                 tags: ["luxury", "bedside table", "leather", "wood", "storage"],
                 image: "/assets/images/letherAndWood_bedSide_table.jpg",
-                threeDModel: "/path/to/letherAndWood_bedSide_table_model.glb",
+                threeDModel: "/assets/3dModels/letherAndWood_bedSide_table_model.glb",
                 quantity: 6
             },
             {
@@ -378,7 +378,7 @@ export class MockDataService {
                 price: 179.99,
                 tags: ["modern", "bedside table", "stylish", "storage"],
                 image: "/assets/images/minotti_bedSide_table.jpg",
-                threeDModel: "/path/to/minotti_bedSide_table_model.glb",
+                threeDModel: "/assets/3dModels/minotti_bedSide_table_model.glb",
                 quantity: 14
             },
             {
@@ -388,7 +388,7 @@ export class MockDataService {
                 price: 129.99,
                 tags: ["modern", "bedside table", "contemporary", "storage"],
                 image: "/assets/images/modern_bedSide_table.jpg",
-                threeDModel: "/path/to/modern_bedSide_table_model.glb",
+                threeDModel: "/assets/3dModels/modern_bedSide_table_model.glb",
                 quantity: 11
             },
             {
@@ -398,7 +398,7 @@ export class MockDataService {
                 price: 149.99,
                 tags: ["modern", "bedside table", "drawers", "storage"],
                 image: "/assets/images/modernWthDrawers_bedSide_table.jpg",
-                threeDModel: "/path/to/modernWthDrawers_bedSide_table_model.glb",
+                threeDModel: "/assets/3dModels/modernWthDrawers_bedSide_table_model.glb",
                 quantity: 9
             },
             {
@@ -408,7 +408,7 @@ export class MockDataService {
                 price: 169.99,
                 tags: ["classic", "bedside table", "oak", "storage"],
                 image: "/assets/images/oak_bedSide_table.jpg",
-                threeDModel: "/path/to/oak_bedSide_table_model.glb",
+                threeDModel: "/assets/3dModels/oak_bedSide_table_model.glb",
                 quantity: 16
             },
             {
@@ -418,7 +418,7 @@ export class MockDataService {
                 price: 119.99,
                 tags: ["rustic", "bedside table", "pine", "storage"],
                 image: "/assets/images/pinus_bedSide_table.jpg",
-                threeDModel: "/path/to/pinus_bedSide_table_model.glb",
+                threeDModel: "/assets/3dModels/pinus_bedSide_table_model.glb",
                 quantity: 12
             },
             {
@@ -428,7 +428,7 @@ export class MockDataService {
                 price: 99.99,
                 tags: ["modern", "bedside table", "white", "storage"],
                 image: "/assets/images/white_bedSide_table.jpg",
-                threeDModel: "/path/to/white_bedSide_table_model.glb",
+                threeDModel: "/assets/3dModels/white_bedSide_table_model.glb",
                 quantity: 10
             },
             {
@@ -438,7 +438,7 @@ export class MockDataService {
                 price: 129.99,
                 tags: ["classic", "bedside table", "wood", "storage"],
                 image: "/assets/images/wooden_bedSide_table.jpg",
-                threeDModel: "/path/to/wooden_bedSide_table_model.glb",
+                threeDModel: "/assets/3dModels/wooden_bedSide_table_model.glb",
                 quantity: 14
             }
         ],
@@ -450,7 +450,7 @@ export class MockDataService {
               price: 199.99,
               tags: ["modern", "coffee table", "unique", "living room"],
               image: "/assets/images/avilum_coffee_table.jpg",
-              threeDModel: "/path/to/avilum_coffee_table_model.glb",
+              threeDModel: "/assets/3dModels/avilum_coffee_table_model.glb",
               quantity: 12
           },
           {
@@ -460,7 +460,7 @@ export class MockDataService {
               price: 149.99,
               tags: ["modern", "coffee table", "minimalist", "living room"],
               image: "/assets/images/bend_coffee_table.jpg",
-              threeDModel: "/path/to/bend_coffee_table_model.glb",
+              threeDModel: "/assets/3dModels/bend_coffee_table_model.glb",
               quantity: 10
           },
           {
@@ -470,7 +470,7 @@ export class MockDataService {
               price: 229.99,
               tags: ["rustic", "coffee table", "wood", "metal", "living room"],
               image: "/assets/images/farmHouse_coffee_table.jpg",
-              threeDModel: "/path/to/farmHouse_coffee_table_model.glb",
+              threeDModel: "/assets/3dModels/farmHouse_coffee_table_model.glb",
               quantity: 15
           },
           {
@@ -480,7 +480,7 @@ export class MockDataService {
               price: 179.99,
               tags: ["modern", "coffee table", "glass", "metal", "living room"],
               image: "/assets/images/glass_coffee_table.jpg",
-              threeDModel: "/path/to/glass_coffee_table_model.glb",
+              threeDModel: "/assets/3dModels/glass_coffee_table_model.glb",
               quantity: 8
           },
           {
@@ -490,7 +490,7 @@ export class MockDataService {
               price: 249.99,
               tags: ["modern", "coffee table", "unique", "living room"],
               image: "/assets/images/infinito_coffee_table.jpg",
-              threeDModel: "/path/to/infinito_coffee_table_model.glb",
+              threeDModel: "/assets/3dModels/infinito_coffee_table_model.glb",
               quantity: 18
           },
           {
@@ -500,7 +500,7 @@ export class MockDataService {
               price: 399.99,
               tags: ["luxury", "coffee table", "marble", "gold", "living room"],
               image: "/assets/images/marble_coffee_table.jpg",
-              threeDModel: "/path/to/marble_coffee_table_model.glb",
+              threeDModel: "/assets/3dModels/marble_coffee_table_model.glb",
               quantity: 6
           },
           {
@@ -510,7 +510,7 @@ export class MockDataService {
               price: 199.99,
               tags: ["modern", "coffee table", "minimalist", "living room"],
               image: "/assets/images/moden_coffee_table.jpg",
-              threeDModel: "/path/to/moden_coffee_table_model.glb",
+              threeDModel: "/assets/3dModels/moden_coffee_table_model.glb",
               quantity: 14
           },
           {
@@ -520,7 +520,7 @@ export class MockDataService {
               price: 229.99,
               tags: ["classic", "coffee table", "oak", "wood", "living room"],
               image: "/assets/images/oak_classic_coffee_table.jpg",
-              threeDModel: "/path/to/oak_classic_coffee_table_model.glb",
+              threeDModel: "/assets/3dModels/oak_classic_coffee_table_model.glb",
               quantity: 11
           },
           {
@@ -530,7 +530,7 @@ export class MockDataService {
               price: 249.99,
               tags: ["modern", "coffee table", "storage", "living room"],
               image: "/assets/images/oak_coffee_table.jpg",
-              threeDModel: "/path/to/oak_coffee_table_model.glb",
+              threeDModel: "/assets/3dModels/oak_coffee_table_model.glb",
               quantity: 9
           },
           {
@@ -540,7 +540,7 @@ export class MockDataService {
               price: 299.99,
               tags: ["modern", "coffee table", "unique", "living room"],
               image: "/assets/images/surf_coffee_table.jpg",
-              threeDModel: "/path/to/surf_coffee_table_model.glb",
+              threeDModel: "/assets/3dModels/surf_coffee_table_model.glb",
               quantity: 16
           },
           {
@@ -550,7 +550,7 @@ export class MockDataService {
               price: 169.99,
               tags: ["modern", "coffee table", "minimalist", "living room"],
               image: "/assets/images/wals_coffee_table.jpg",
-              threeDModel: "/path/to/wals_coffee_table_model.glb",
+              threeDModel: "/assets/3dModels/wals_coffee_table_model.glb",
               quantity: 12
           }
       ],
@@ -562,7 +562,7 @@ export class MockDataService {
             price: 399.99,
             tags: ["rustic", "dining table", "wood", "metal", "dining room"],
             image: "/assets/images/antigua_dining_table.jpg",
-            threeDModel: "/path/to/antigua_dining_table_model.glb",
+            threeDModel: "/assets/3dModels/antigua_dining_table_model.glb",
             quantity: 12
         },
         {
@@ -572,7 +572,7 @@ export class MockDataService {
             price: 499.99,
             tags: ["modern", "dining table", "unique", "dining room"],
             image: "/assets/images/ares_dining_table.jpg",
-            threeDModel: "/path/to/ares_dining_table_model.glb",
+            threeDModel: "/assets/3dModels/ares_dining_table_model.glb",
             quantity: 10
         },
         {
@@ -582,7 +582,7 @@ export class MockDataService {
             price: 349.99,
             tags: ["modern", "dining table", "minimalist", "dining room"],
             image: "/assets/images/jakob_dining_table.jpg",
-            threeDModel: "/path/to/jakob_dining_table_model.glb",
+            threeDModel: "/assets/3dModels/jakob_dining_table_model.glb",
             quantity: 15
         },
         {
@@ -592,7 +592,7 @@ export class MockDataService {
             price: 429.99,
             tags: ["modern", "dining table", "glass", "metal", "dining room"],
             image: "/assets/images/modern_dining_table.jpg",
-            threeDModel: "/path/to/modern_dining_table_model.glb",
+            threeDModel: "/assets/3dModels/modern_dining_table_model.glb",
             quantity: 8
         },
         {
@@ -602,7 +602,7 @@ export class MockDataService {
             price: 499.99,
             tags: ["modern", "dining table", "unique", "dining room"],
             image: "/assets/images/oracle_dining_table.jpg",
-            threeDModel: "/path/to/oracle_dining_table_model.glb",
+            threeDModel: "/assets/3dModels/oracle_dining_table_model.glb",
             quantity: 18
         },
         {
@@ -612,7 +612,7 @@ export class MockDataService {
             price: 599.99,
             tags: ["luxury", "dining table", "velvet", "dining room"],
             image: "/assets/images/velvet_dining_table.jpg",
-            threeDModel: "/path/to/velvet_dining_table_model.glb",
+            threeDModel: "/assets/3dModels/velvet_dining_table_model.glb",
             quantity: 6
         }
       ],
@@ -624,7 +624,7 @@ export class MockDataService {
             price: 199.99,
             tags: ["modern", "desk", "minimalist", "office"],
             image: "/assets/images/balfield_desk.jpg",
-            threeDModel: "/path/to/balfield_desk_model.glb",
+            threeDModel: "/assets/3dModels/balfield_desk_model.glb",
             quantity: 12
         },
         {
@@ -634,7 +634,7 @@ export class MockDataService {
             price: 149.99,
             tags: ["modern", "desk", "computer", "office"],
             image: "/assets/images/computer_desk.jpg",
-            threeDModel: "/path/to/computer_desk_model.glb",
+            threeDModel: "/assets/3dModels/computer_desk_model.glb",
             quantity: 10
         },
         {
@@ -644,7 +644,7 @@ export class MockDataService {
             price: 99.99,
             tags: ["modern", "desk", "compact", "office"],
             image: "/assets/images/justine_desk.jpg",
-            threeDModel: "/path/to/justine_desk_model.glb",
+            threeDModel: "/assets/3dModels/justine_desk_model.glb",
             quantity: 15
         },
         {
@@ -654,7 +654,7 @@ export class MockDataService {
             price: 179.99,
             tags: ["modern", "desk", "unique", "office"],
             image: "/assets/images/mickie_desk.jpg",
-            threeDModel: "/path/to/mickie_desk_model.glb",
+            threeDModel: "/assets/3dModels/mickie_desk_model.glb",
             quantity: 8
         },
         {
@@ -664,7 +664,7 @@ export class MockDataService {
             price: 299.99,
             tags: ["classic", "desk", "oak", "wood", "office"],
             image: "/assets/images/oak_desk.jpg",
-            threeDModel: "/path/to/oak_desk_model.glb",
+            threeDModel: "/assets/3dModels/oak_desk_model.glb",
             quantity: 18
         },
         {
@@ -674,7 +674,7 @@ export class MockDataService {
             price: 249.99,
             tags: ["vintage", "desk", "classic", "office"],
             image: "/assets/images/old_style_desk.jpg",
-            threeDModel: "/path/to/old_style_desk_model.glb",
+            threeDModel: "/assets/3dModels/old_style_desk_model.glb",
             quantity: 6
         },
         {
@@ -684,7 +684,7 @@ export class MockDataService {
             price: 229.99,
             tags: ["modern", "desk", "unique", "office"],
             image: "/assets/images/petal_desk.jpg",
-            threeDModel: "/path/to/petal_desk_model.glb",
+            threeDModel: "/assets/3dModels/petal_desk_model.glb",
             quantity: 14
         },
         {
@@ -694,7 +694,7 @@ export class MockDataService {
             price: 149.99,
             tags: ["modern", "desk", "minimalist", "office"],
             image: "/assets/images/simple_office_desk.jpg",
-            threeDModel: "/path/to/simple_office_desk_model.glb",
+            threeDModel: "/assets/3dModels/simple_office_desk_model.glb",
             quantity: 11
         },
         {
@@ -704,7 +704,7 @@ export class MockDataService {
             price: 99.99,
             tags: ["modern", "desk", "compact", "office"],
             image: "/assets/images/small_desk.jpg",
-            threeDModel: "/path/to/small_desk_model.glb",
+            threeDModel: "/assets/3dModels/small_desk_model.glb",
             quantity: 9
         },
         {
@@ -714,7 +714,7 @@ export class MockDataService {
             price: 169.99,
             tags: ["classic", "desk", "wood", "office"],
             image: "/assets/images/small_wooden_desk.jpg",
-            threeDModel: "/path/to/small_wooden_desk_model.glb",
+            threeDModel: "/assets/3dModels/small_wooden_desk_model.glb",
             quantity: 16
         },
         {
@@ -724,7 +724,7 @@ export class MockDataService {
             price: 399.99,
             tags: ["luxury", "desk", "walnut", "wood", "office"],
             image: "/assets/images/walnut_desk.jpg",
-            threeDModel: "/path/to/walnut_desk_model.glb",
+            threeDModel: "/assets/3dModels/walnut_desk_model.glb",
             quantity: 12
         },
         {
@@ -734,7 +734,7 @@ export class MockDataService {
             price: 129.99,
             tags: ["modern", "desk", "white", "office"],
             image: "/assets/images/white_office_desk.jpg",
-            threeDModel: "/path/to/white_office_desk_model.glb",
+            threeDModel: "/assets/3dModels/white_office_desk_model.glb",
             quantity: 10
         },
         {
@@ -744,7 +744,7 @@ export class MockDataService {
             price: 199.99,
             tags: ["classic", "desk", "wood", "office"],
             image: "/assets/images/wooden_desk.jpg",
-            threeDModel: "/path/to/wooden_desk_model.glb",
+            threeDModel: "/assets/3dModels/wooden_desk_model.glb",
             quantity: 14
         },
         {
@@ -754,7 +754,7 @@ export class MockDataService {
             price: 149.99,
             tags: ["classic", "desk", "writing", "office"],
             image: "/assets/images/writing_desk.jpg",
-            threeDModel: "/path/to/writing_desk_model.glb",
+            threeDModel: "/assets/3dModels/writing_desk_model.glb",
             quantity: 11
         }
     ]
@@ -769,7 +769,7 @@ export class MockDataService {
                 price: 129.99,
                 tags: ["storage", "cabinet", "drawer"],
                 image: "/assets/images/cabinet_drawer.jpg",
-                threeDModel: "/path/to/cabinet_drawer_model.glb",
+                threeDModel: "/assets/3dModels/cabinet_drawer_model.glb",
                 quantity: 12
             },
             {
@@ -779,7 +779,7 @@ export class MockDataService {
                 price: 99.99,
                 tags: ["storage", "drawer", "mobile"],
                 image: "/assets/images/casters_drawer.jpg",
-                threeDModel: "/path/to/casters_drawer_model.glb",
+                threeDModel: "/assets/3dModels/casters_drawer_model.glb",
                 quantity: 10
             },
             {
@@ -789,7 +789,7 @@ export class MockDataService {
                 price: 199.99,
                 tags: ["storage", "chest", "drawer"],
                 image: "/assets/images/chest_cabinet_drawer.jpg",
-                threeDModel: "/path/to/chest_cabinet_drawer_model.glb",
+                threeDModel: "/assets/3dModels/chest_cabinet_drawer_model.glb",
                 quantity: 15
             },
             {
@@ -799,7 +799,7 @@ export class MockDataService {
                 price: 179.99,
                 tags: ["modern", "storage", "chest", "drawer"],
                 image: "/assets/images/dakar_chest_drawer.jpg",
-                threeDModel: "/path/to/dakar_chest_drawer_model.glb",
+                threeDModel: "/assets/3dModels/dakar_chest_drawer_model.glb",
                 quantity: 8
             },
             {
@@ -809,7 +809,7 @@ export class MockDataService {
                 price: 299.99,
                 tags: ["luxury", "storage", "drawer"],
                 image: "/assets/images/giorgio_drawer.jpg",
-                threeDModel: "/path/to/giorgio_drawer_model.glb",
+                threeDModel: "/assets/3dModels/giorgio_drawer_model.glb",
                 quantity: 18
             },
             {
@@ -819,7 +819,7 @@ export class MockDataService {
                 price: 249.99,
                 tags: ["vintage", "storage", "drawer"],
                 image: "/assets/images/latawn_drawer.jpg",
-                threeDModel: "/path/to/latawn_drawer_model.glb",
+                threeDModel: "/assets/3dModels/latawn_drawer_model.glb",
                 quantity: 6
             },
             {
@@ -829,7 +829,7 @@ export class MockDataService {
                 price: 149.99,
                 tags: ["modern", "storage", "drawer", "metal"],
                 image: "/assets/images/metal_drawer.jpg",
-                threeDModel: "/path/to/metal_drawer_model.glb",
+                threeDModel: "/assets/3dModels/metal_drawer_model.glb",
                 quantity: 14
             },
             {
@@ -839,7 +839,7 @@ export class MockDataService {
                 price: 229.99,
                 tags: ["classic", "storage", "drawer", "oak"],
                 image: "/assets/images/oak_drawer.jpg",
-                threeDModel: "/path/to/oak_drawer_model.glb",
+                threeDModel: "/assets/3dModels/oak_drawer_model.glb",
                 quantity: 11
             },
             {
@@ -849,7 +849,7 @@ export class MockDataService {
                 price: 199.99,
                 tags: ["unique", "storage", "drawer", "rattan"],
                 image: "/assets/images/rattan_drawer.jpg",
-                threeDModel: "/path/to/rattan_drawer_model.glb",
+                threeDModel: "/assets/3dModels/rattan_drawer_model.glb",
                 quantity: 9
             },
             {
@@ -859,7 +859,7 @@ export class MockDataService {
                 price: 169.99,
                 tags: ["storage", "drawer", "adjustable"],
                 image: "/assets/images/rigged_drawer.jpg",
-                threeDModel: "/path/to/rigged_drawer_model.glb",
+                threeDModel: "/assets/3dModels/rigged_drawer_model.glb",
                 quantity: 16
             },
             {
@@ -869,7 +869,7 @@ export class MockDataService {
                 price: 99.99,
                 tags: ["modern", "storage", "drawer", "minimalist"],
                 image: "/assets/images/simple_drawer.jpg",
-                threeDModel: "/path/to/simple_drawer_model.glb",
+                threeDModel: "/assets/3dModels/simple_drawer_model.glb",
                 quantity: 12
             },
             {
@@ -879,7 +879,7 @@ export class MockDataService {
                 price: 129.99,
                 tags: ["storage", "drawer", "compact"],
                 image: "/assets/images/storage_box_drawer.jpg",
-                threeDModel: "/path/to/storage_box_drawer_model.glb",
+                threeDModel: "/assets/3dModels/storage_box_drawer_model.glb",
                 quantity: 10
             },
             {
@@ -889,7 +889,7 @@ export class MockDataService {
                 price: 149.99,
                 tags: ["modern", "storage", "drawer", "white"],
                 image: "/assets/images/white_drawer.jpg",
-                threeDModel: "/path/to/white_drawer_model.glb",
+                threeDModel: "/assets/3dModels/white_drawer_model.glb",
                 quantity: 14
             },
             {
@@ -899,7 +899,7 @@ export class MockDataService {
                 price: 199.99,
                 tags: ["classic", "storage", "drawer", "wood"],
                 image: "/assets/images/wooden_drawer.jpg",
-                threeDModel: "/path/to/wooden_drawer_model.glb",
+                threeDModel: "/assets/3dModels/wooden_drawer_model.glb",
                 quantity: 11
             }
         ],
@@ -911,7 +911,7 @@ export class MockDataService {
               price: 129.99,
               tags: ["storage", "shelving", "5-tier"],
               image: "/assets/images/5tier_shelve.jpg",
-              threeDModel: "/path/to/5tier_shelve_model.glb",
+              threeDModel: "/assets/3dModels/5tier_shelve_model.glb",
               quantity: 12
           },
           {
@@ -921,7 +921,7 @@ export class MockDataService {
               price: 99.99,
               tags: ["storage", "shelving", "corner"],
               image: "/assets/images/corner_shelve.jpg",
-              threeDModel: "/path/to/corner_shelve_model.glb",
+              threeDModel: "/assets/3dModels/corner_shelve_model.glb",
               quantity: 10
           },
           {
@@ -931,7 +931,7 @@ export class MockDataService {
               price: 179.99,
               tags: ["modern", "storage", "shelving", "industrial"],
               image: "/assets/images/industrial_shelve.jpg",
-              threeDModel: "/path/to/industrial_shelve_model.glb",
+              threeDModel: "/assets/3dModels/industrial_shelve_model.glb",
               quantity: 15
           },
           {
@@ -941,7 +941,7 @@ export class MockDataService {
               price: 149.99,
               tags: ["modern", "storage", "shelving", "modular"],
               image: "/assets/images/modern_modular_shelve.jpg",
-              threeDModel: "/path/to/modern_modular_shelve_model.glb",
+              threeDModel: "/assets/3dModels/modern_modular_shelve_model.glb",
               quantity: 8
           },
           {
@@ -951,7 +951,7 @@ export class MockDataService {
               price: 199.99,
               tags: ["modern", "rustic", "storage", "shelving"],
               image: "/assets/images/modern_rustic_shelve.jpg",
-              threeDModel: "/path/to/modern_rustic_shelve_model.glb",
+              threeDModel: "/assets/3dModels/modern_rustic_shelve_model.glb",
               quantity: 18
           },
           {
@@ -961,7 +961,7 @@ export class MockDataService {
               price: 129.99,
               tags: ["modern", "storage", "shelving", "open"],
               image: "/assets/images/open_shelve.jpg",
-              threeDModel: "/path/to/open_shelve_model.glb",
+              threeDModel: "/assets/3dModels/open_shelve_model.glb",
               quantity: 6
           },
           {
@@ -971,7 +971,7 @@ export class MockDataService {
               price: 169.99,
               tags: ["modern", "storage", "shelving", "stylish"],
               image: "/assets/images/stylish_shelve.jpg",
-              threeDModel: "/path/to/stylish_shelve_model.glb",
+              threeDModel: "/assets/3dModels/stylish_shelve_model.glb",
               quantity: 14
           },
           {
@@ -981,7 +981,7 @@ export class MockDataService {
               price: 199.99,
               tags: ["modern", "storage", "shelving", "unique"],
               image: "/assets/images/twisted_shelve.jpg",
-              threeDModel: "/path/to/twisted_shelve_model.glb",
+              threeDModel: "/assets/3dModels/twisted_shelve_model.glb",
               quantity: 11
           },
           {
@@ -991,7 +991,7 @@ export class MockDataService {
               price: 149.99,
               tags: ["classic", "storage", "shelving", "wood"],
               image: "/assets/images/wood_shelve.jpg",
-              threeDModel: "/path/to/wood_shelve_model.glb",
+              threeDModel: "/assets/3dModels/wood_shelve_model.glb",
               quantity: 9
           },
           {
@@ -1001,7 +1001,7 @@ export class MockDataService {
               price: 129.99,
               tags: ["classic", "storage", "shelving", "wood"],
               image: "/assets/images/wooden_shelve.jpg",
-              threeDModel: "/path/to/wooden_shelve_model.glb",
+              threeDModel: "/assets/3dModels/wooden_shelve_model.glb",
               quantity: 16
           }
       ]
@@ -1017,7 +1017,7 @@ export class MockDataService {
                 price: 999.99,
                 tags: ["luxury", "bed", "tufted"],
                 image: "/assets/images/B&B_bed.jpg",
-                threeDModel: "/path/to/B&B_bed_model.glb",
+                threeDModel: "/assets/3dModels/B&B_bed_model.glb",
                 quantity: 5
             },
             {
@@ -1027,7 +1027,7 @@ export class MockDataService {
                 price: 799.99,
                 tags: ["modern", "bed", "blue"],
                 image: "/assets/images/blue_bed.jpg",
-                threeDModel: "/path/to/blue_bed_model.glb",
+                threeDModel: "/assets/3dModels/blue_bed_model.glb",
                 quantity: 8
             },
             {
@@ -1037,7 +1037,7 @@ export class MockDataService {
                 price: 699.99,
                 tags: ["modern", "bed", "minimalist"],
                 image: "/assets/images/letto_pixel_bed.jpg",
-                threeDModel: "/path/to/letto_pixel_bed_model.glb",
+                threeDModel: "/assets/3dModels/letto_pixel_bed_model.glb",
                 quantity: 10
             },
             {
@@ -1047,7 +1047,7 @@ export class MockDataService {
                 price: 899.99,
                 tags: ["modern", "bed"],
                 image: "/assets/images/modern_bed.jpg",
-                threeDModel: "/path/to/modern_bed_model.glb",
+                threeDModel: "/assets/3dModels/modern_bed_model.glb",
                 quantity: 7
             },
             {
@@ -1057,7 +1057,7 @@ export class MockDataService {
                 price: 999.99,
                 tags: ["modern", "bed", "black"],
                 image: "/assets/images/modern_black_bed.jpg",
-                threeDModel: "/path/to/modern_black_bed_model.glb",
+                threeDModel: "/assets/3dModels/modern_black_bed_model.glb",
                 quantity: 6
             },
             {
@@ -1067,7 +1067,7 @@ export class MockDataService {
                 price: 899.99,
                 tags: ["romantic", "bed", "elegant"],
                 image: "/assets/images/orchid_bed.jpg",
-                threeDModel: "/path/to/orchid_bed_model.glb",
+                threeDModel: "/assets/3dModels/orchid_bed_model.glb",
                 quantity: 9
             },
             {
@@ -1077,7 +1077,7 @@ export class MockDataService {
                 price: 1199.99,
                 tags: ["luxury", "bed", "plush"],
                 image: "/assets/images/sahara_bed.jpg",
-                threeDModel: "/path/to/sahara_bed_model.glb",
+                threeDModel: "/assets/3dModels/sahara_bed_model.glb",
                 quantity: 5
             }
           ]
