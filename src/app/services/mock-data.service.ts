@@ -10,11 +10,11 @@ interface Product {
     threeDModel: string;
     quantity: number;
   }
-  
+
 interface Subcategories {
     [key: string]: Product[];
   }
-  
+
 interface FurnitureData {
     seatings: Subcategories;
     tables: Subcategories;
@@ -1093,7 +1093,7 @@ export class MockDataService {
   getProductById(id: number): any | null {
     // Array to store the product if found
     let foundProduct: any | null = null;
-  
+
     // Recursive function to search for the product
     function collectAndFind(obj: any) {
       if (Array.isArray(obj)) {
@@ -1111,15 +1111,11 @@ export class MockDataService {
         });
       }
     }
-  
+
     // Start the recursive search
     collectAndFind(this.furnitureData);
-  
+
     // Return the found product or null if not found
     return foundProduct;
   }
-  
-  
-
-
 }

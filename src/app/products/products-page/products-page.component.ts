@@ -13,7 +13,6 @@ import { ProductComponent } from '../product/product.component';
   imports: [MatSliderModule, CommonModule, MatListModule, MatCheckboxModule, ProductComponent],
   standalone: true,
   templateUrl: './products-page.component.html',
-  styleUrl: './products-page.component.css'
 })
 export class ProductsPageComponent {
 
@@ -98,11 +97,11 @@ export class ProductsPageComponent {
     this.selectedTag = this.selectedTag === tag ? null : tag;
     console.log(this.selectedTag);
     this.filteredProducts = this.filterAndSortProducts(this.allProducts, this.selectedTag, this.selectedColor, this.selectedFabric);
-    
+
   }
 
 
-   
+
 
 
   filterAndSortProducts(
@@ -113,7 +112,7 @@ export class ProductsPageComponent {
   ): any[] {
     const allProducts: any[] = [];
     const [minPrice, maxPrice] = this.extractPriceRange(this.priceRange);
-  
+
     // Recursive function to collect all products
     function collectProducts(obj: any) {
       if (Array.isArray(obj)) {
@@ -122,9 +121,9 @@ export class ProductsPageComponent {
         Object.values(obj).forEach(value => collectProducts(value));
       }
     }
-  
+
     collectProducts(products);
-  
+
     if (selectedTag || selectedColor || selectedFabric || this.priceRange) {
       // Filter products by the provided criteria
       return allProducts.filter(item => {
@@ -133,7 +132,7 @@ export class ProductsPageComponent {
         const matchesColor = selectedColor ? tags.includes(selectedColor) : true;
         const matchesFabric = selectedFabric ? tags.includes(selectedFabric) : true;
         const matchesPrice = item.price >= minPrice && item.price <= maxPrice;
-  
+
         return matchesTag && matchesColor && matchesFabric && matchesPrice;
       });
     } else {
@@ -143,8 +142,8 @@ export class ProductsPageComponent {
   }
 
 
-  
-  
+
+
 
 
 
@@ -163,7 +162,7 @@ export class ProductsPageComponent {
 
 
   //Color filter
-  
+
 
 
   // Toggle the selected color
@@ -171,7 +170,7 @@ export class ProductsPageComponent {
     this.selectedColor = this.selectedColor === colorName ? null : colorName;
     console.log('Selected color:', this.selectedColor); // Optional: Debug log
     this.filteredProducts = this.filterAndSortProducts(this.allProducts, this.selectedTag, this.selectedColor, this.selectedFabric);
-    
+
   }
 
 
@@ -182,7 +181,7 @@ export class ProductsPageComponent {
     this.selectedFabric = this.selectedFabric === fabricName ? null : fabricName;
     console.log('Selected color:', this.selectedColor); // Optional: Debug log
     this.filteredProducts = this.filterAndSortProducts(this.allProducts, this.selectedTag, this.selectedColor, this.selectedFabric);
-    
+
   }
 
   getFabricColor(fabricName: string): string {

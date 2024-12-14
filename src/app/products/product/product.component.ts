@@ -12,7 +12,6 @@ import { RouterLink } from '@angular/router';
   imports: [FontAwesomeModule, CurrencyPipe, NgIf, RouterLink],
   standalone: true,
   templateUrl: './product.component.html',
-  styleUrl: './product.component.css',
   schemas: [CUSTOM_ELEMENTS_SCHEMA], // Add this line
 })
 export class ProductComponent {

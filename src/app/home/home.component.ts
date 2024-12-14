@@ -3,23 +3,19 @@ import { ProductComponent } from '../products/product/product.component';
 import { MockDataService } from '../services/mock-data.service';
 import '@google/model-viewer';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { AnimateFromViewportDirective } from '../animate-from-viewport.directive';
+import { AnimateFromViewportDirective } from '../animate-from-viewport.directive';import { AddToCardComponent } from '../add-to-card/add-to-card.component';
 
 @Component({
   selector: 'app-home',
   imports: [ProductComponent, AnimateFromViewportDirective],
   standalone: true,
   templateUrl: './home.component.html',
-  styleUrl: './home.component.css',
   schemas: [CUSTOM_ELEMENTS_SCHEMA], // Add this line
 })
 export class HomeComponent {
 
   private productsService = inject(MockDataService);
-
-
   products = this.productsService.getData();
-
   bestSellerProducts = this.bestSellerData();
 
   bestSellerData() {
@@ -41,10 +37,4 @@ export class HomeComponent {
 
     return selectedProducts;
   }
-
-
-
-
-
-
 }

@@ -2,7 +2,9 @@
   <div class="flex justify-end items-center">
     <div class="flex space-x-4">
       <a routerLink="./" class="hover:underline text-gray-900">Home</a>
-      <a routerLink="products" class="hover:underline text-gray-900">Products</a>
+      <a routerLink="products" class="hover:underline text-gray-900"
+        >Products</a
+      >
       <a routerLink="" class="hover:underline text-gray-900">Wishlist</a>
     </div>
     <div class="flex space-x-4 ml-4">
@@ -12,12 +14,15 @@
       <button class="text-gray-900 hover:text-gray-400">
         <fa-icon [icon]="faUser" />
       </button>
-      <button class="text-gray-900 hover:text-gray-400">
+      <button routerLink="cart" class="text-gray-900 hover:text-gray-400">
         <fa-icon [icon]="faCart" />
-        <span
-          class="bg-red-500 text-white text-xs font-bold rounded-full px-2 py-1"
-          >0</span
-        >
+        <span class="relative">
+          <span
+            class="bg-red-500 text-white text-xs font-bold rounded-full px-0.5 absolute top-0 left-0 transform -translate-x-1/2 -translate-y-1/2"
+          >
+            {{ totalItems() }}
+          </span>
+        </span>
       </button>
     </div>
   </div>
