@@ -38,31 +38,32 @@ export class ProductsPageComponent {
 
 
 
-
-
   colors = [
-    { name: 'Black', hex: '#000000', count: 37 },
-    { name: 'Blue', hex: '#0000FF', count: 7 },
-    { name: 'Golden Oak', hex: '#D4AF37', count: 76 },
-    { name: 'Dark Brown', hex: '#654321', count: 95 },
-    { name: 'Green', hex: '#008000', count: 11 },
-    { name: 'Light Oak', hex: '#C8B560', count: 28 },
-    { name: 'Red', hex: '#FF0000', count: 4 },
-    { name: 'Silver', hex: '#C0C0C0', count: 24 },
+    { name: 'black', hex: '#000000', count: 37 },
+    { name: 'white', hex: '#FFFFFF', count: 28 },
+    { name: 'blue', hex: '#0000FF', count: 7 },
+    { name: 'yellow', hex: '#FFFF00', count: 76 },
+    { name: 'brown', hex: '#A52A2A', count: 95 },
+    { name: 'green', hex: '#008000', count: 11 },
+    { name: 'orange', hex: '#FFA500', count: 4 },
+    { name: 'silver', hex: '#C0C0C0', count: 24 },
+    { name: 'purple', hex: '#800080', count: 2 },
+    
   ];
+  
 
   fabricOptions: FabricOption[] = [
-    { name: 'cotton', count: 5 },
-    { name: 'silk', count: 2 },
-    { name: 'wool', count: 93 },
-    { name: 'polyester', count: 23 },
-    { name: 'rayon', count: 33 },
-    { name: 'linen', count: 84 },
-    { name: 'wood', count: 84 },
+    { name: 'wood', count: 5 },
+    { name: 'metal', count: 2 },
+    { name: 'glass', count: 93 },
+    { name: 'oak', count: 23 },
+    { name: 'marble', count: 33 },
+    { name: 'cotton', count: 84 },
+   
 
   ];
 
-  tags = ["seating", "storage", "chair", "drawer", "bed", "bedside table", "coffee table", "dining table", "desk"];
+  tags = ["seating", "storage", "chair", "drawer", "bed", "bedside table", "coffee table", "dining table", "desk", "office", "modern", "classic", "luxury"];
 
 
   //Tag filter
@@ -152,10 +153,12 @@ export class ProductsPageComponent {
   //Price Filter
 
   onPriceChange(event: any) {
-    const minValue = event.value[0];
-    const maxValue = event.value[1];
+    const minValue = event.target.value
+    const maxValue = event.target.value
 
-    console.log(minValue, maxValue);
+    console.log("Min Val : ", minValue);
+    console.log("Min Val : ", maxValue);
+
 
 
     this.priceRange = `£${minValue.toLocaleString()} - £${maxValue.toLocaleString()}`;
