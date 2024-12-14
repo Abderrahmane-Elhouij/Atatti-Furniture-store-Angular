@@ -200,8 +200,8 @@ export class MockDataService {
               description: "A sleek and modern sofa with a minimalist design and comfortable seating.",
               price: 299.99,
               tags: ["modern", "sofa", "minimalist", "seating"],
-              image: "/assets/images/Takt_C4_sofa.jpg",
-              threeDModel: "assets/3dModels/Takt_C4_sofa.glb",
+              image: "/assets/images/takt_C4_sofa.jpg",
+              threeDModel: "assets/3dModels/takt_C4_sofa.glb",
               quantity: 14
           }
       ],
@@ -397,8 +397,8 @@ export class MockDataService {
                 description: "A functional bedside table with drawers for convenient storage.",
                 price: 149.99,
                 tags: ["modern", "bedside table", "drawers", "storage"],
-                image: "/assets/images/modernWthDrawers_bedSide_table.jpg",
-                threeDModel: "assets/3dModels/modernWthDrawers_bedSide_table.glb",
+                image: "/assets/images/modernWithDrawers_bedSide_table.jpg",
+                threeDModel: "assets/3dModels/modernWithDrawers_bedSide_table.glb",
                 quantity: 9
             },
             {
@@ -509,8 +509,8 @@ export class MockDataService {
               description: "A stylish and modern coffee table with a minimalist design.",
               price: 199.99,
               tags: ["modern", "coffee table", "minimalist", "living room"],
-              image: "/assets/images/moden_coffee_table.jpg",
-              threeDModel: "assets/3dModels/moden_coffee_table.glb",
+              image: "/assets/images/modern_coffee_table.jpg",
+              threeDModel: "assets/3dModels/modern_coffee_table.glb",
               quantity: 14
           },
           {
