@@ -18,6 +18,10 @@ export const routes: Routes = [
     loadComponent: () => import('./add-to-card/add-to-card.component').then(mod => mod.AddToCardComponent)
   },
   {
+    path: 'checkout',
+    loadComponent: () => import('./checkout-component/checkout-component.component').then(mod => mod.CheckoutComponent)
+  },
+  {
     path: '**',
     component: NotFoundComponent
   }

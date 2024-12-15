@@ -70,7 +70,6 @@ export class ProductsPageComponent {
   selectedTag: string | null = null;
   selectedColor: string | null = null;
   selectedFabric: string | null = null;
-  priceRange: string = '£0 - £900';
 
   paramTag = input.required();
 
@@ -80,6 +79,11 @@ export class ProductsPageComponent {
   //   this.filteredProducts = this.filterAndSortProducts(this.allProducts, this.selectedTag, this.selectedColor, this.selectedFabric);
 
   // }
+  minValue = 100;
+  maxValue = 1000;
+
+  priceRange: string = `£${this.minValue} - £${this.maxValue}`;
+  
 
   extractPriceRange(priceRange: string): [number, number] {
     const priceMatch = priceRange.match(/£(\d+(?:,\d{3})*(?:\.\d+)?)/g);
@@ -144,27 +148,61 @@ export class ProductsPageComponent {
 
 
 
-
-
-
+  
 
 
   //Price Filter
-
   onPriceChange(event: any) {
-    const minValue = event.target.value
-    const maxValue = event.target.value
+    const newValue = event.target.value; // Get the current slider value
+    const [currentMin, currentMax] = this.extractPriceRange(this.priceRange); // Extract min and max
+  
+    // Determine if newValue should update min or max
+    if (newValue < currentMin) {
+      // Update minValue if the new value is less than the current min
+      this.minValue = newValue;
+      this.maxValue = currentMax; // Keep the max unchanged
+    } else if (newValue > currentMax) {
+      // Update maxValue if the new value is greater than the current max
+      this.maxValue = newValue;
+      this.minValue = currentMin; // Keep the min unchanged
+    } else {
+      // Handle the case where newValue is between currentMin and currentMax
+      // Determine whether to adjust min or max based on proximity to current values
+      const diffToMin = Math.abs(newValue - currentMin);
+      const diffToMax = Math.abs(newValue - currentMax);
+  
+      if (diffToMin < diffToMax) {
+        this.minValue = newValue;
+      } else {
+        this.maxValue = newValue;
+      }
+    }
+  
+    // Update the price range string
+    this.priceRange = `£${this.minValue} - £${this.maxValue}`;
+  
+    
+    // // Debugging logs
+    // console.log("Current Min:", currentMin);
+    // console.log("Current Max:", currentMax);
+    // console.log("Updated Min:", this.minValue);
+    // console.log("Updated Max:", this.maxValue);
+    // console.log("Price Range:", this.priceRange);
 
-    console.log("Min Val : ", minValue);
-    console.log("Min Val : ", maxValue);
+    
 
-
-
-    this.priceRange = `£${minValue.toLocaleString()} - £${maxValue.toLocaleString()}`;
   }
 
 
-  //Color filter
+  filterPrice(){
+
+    
+    
+    this.filteredProducts = this.filterAndSortProducts(this.allProducts, this.selectedTag, this.selectedColor, this.selectedFabric);
+
+
+  }
+  
 
 
 

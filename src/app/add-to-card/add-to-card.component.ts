@@ -1,6 +1,16 @@
 import { Component, effect, inject, output, signal, Signal } from '@angular/core';
 import { CartService } from '../services/cart.service';
 import { DecimalPipe } from '@angular/common';
+import {MatButtonModule} from '@angular/material/button';import {
+  MAT_DIALOG_DATA,
+  MatDialog,
+  MatDialogActions,
+  MatDialogClose,
+  MatDialogContent,
+  MatDialogRef,
+  MatDialogTitle,
+} from '@angular/material/dialog';
+import { CheckoutComponent } from '../checkout-component/checkout-component.component';
 
 @Component({
   selector: 'app-add-to-card',
@@ -68,4 +78,15 @@ export class AddToCardComponent {
   sendData() {
     this.cartService.sendData(this.totalItems, 'addtocart'); // Send data to the service
   }
+
+  readonly dialog = inject(MatDialog);
+
+  openCheckoutDialog() {
+    this.dialog.open(CheckoutComponent, {
+      width: '800px',
+      height: 'auto', 
+     
+    });
+  }
+
 }

@@ -1,0 +1,95 @@
+<div class="payment-container">
+    <!-- Payment Header -->
+    <h2 class="payment-header">Pay with card</h2>
+  
+    <!-- Payment Form -->
+    <form class="payment-form">
+      <!-- Email Field -->
+      <div class="input-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="Enter your email" required />
+      </div>
+  
+      <!-- Card Information -->
+      <div class="input-group">
+        <label for="card-number">Card information</label>
+        <div class="card-info-group">
+          <input
+            type="text"
+            id="card-number"
+            placeholder="1234 1234 1234 1234"
+            maxlength="19"
+            required
+          />
+          <!-- Card Logos -->
+          <div class="card-icons">
+            <fa-icon [icon]="faCcVisa" class="icon visa"></fa-icon>
+            <fa-icon [icon]="faCcMastercard" class="icon mastercard"></fa-icon>
+            <fa-icon [icon]="faCcAmex" class="icon amex"></fa-icon>
+            <fa-icon [icon]="faCcPaypal" class="icon paypal"></fa-icon>
+          </div>
+          
+        </div>
+      </div>
+      <div class="input-row">
+        <div class="input-group">
+            <label for="date">Date</label>
+            <input
+                type="text"
+                placeholder="MM / YY"
+                maxlength="5"
+                
+                required
+            />
+        </div>
+        <div class="input-group">
+            <label for="cvc">CVC</label>
+            <input
+                type="text"
+                placeholder="CVC"
+                maxlength="3"
+               
+                required
+            />
+        </div>
+      </div>
+      <!-- Name on Card -->
+      <div class="input-group">
+        <label for="name-on-card">Name on card</label>
+        <input
+          type="text"
+          id="name-on-card"
+          placeholder="Enter cardholder's name"
+          required
+        />
+      </div>
+  
+      <!-- Country/Region and ZIP -->
+      <div class="input-row">
+        <div class="input-group">
+          <label for="country">Country or region</label>
+          <select id="country">
+            <option>Morocco</option>
+            <option>United States</option>
+            <option>Canada</option>
+            <option>United Kingdom</option>
+            <option>France</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <label for="zip">ZIP</label>
+          <input type="text" id="zip" placeholder="12345" required />
+        </div>
+      </div>
+  
+      <!-- Subscribe Button -->
+      <button type="submit" class="subscribe-button">Subscribe</button>
+  
+      <!-- Terms and Conditions -->
+      <p class="terms-text">
+        By confirming your subscription, you allow us to charge your card for this
+        payment and future payments in accordance with their terms.
+      </p>
+    </form>
+  </div>
+  

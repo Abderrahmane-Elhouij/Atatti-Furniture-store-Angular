@@ -1,0 +1,105 @@
+/* Container Styling */
+.payment-container {
+    width: 100%;
+    padding: 30px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-family: Arial, sans-serif;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    
+    
+  }
+  
+  /* Payment Header */
+  .payment-header {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #333;
+    text-align: center;
+  }
+  
+  /* Input Group */
+  .input-group {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .input-group label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+  }
+  
+  .input-group input,
+  .input-group select {
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  /* Card Info Group */
+  .card-info-group {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .card-info-group input {
+    flex: 1;
+  }
+  
+  .expiry-input,
+  .cvc-input {
+    width: 70px;
+  }
+  
+  /* Card Logos */
+  .card-icons {
+    display: flex;
+    gap: 5px;
+    margin-left: 10px;
+  }
+  
+  .card-icons .icon {
+    font-size: 1.2rem;
+    color: #555;
+  }
+  
+  /* Input Row */
+  .input-row {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .input-row .input-group {
+    flex: 1;
+  }
+  
+  /* Subscribe Button */
+  .subscribe-button {
+    width: 100%;
+    padding: 10px;
+    background-color: black;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .subscribe-button:hover {
+    background-color: gray;
+  }
+  
+  /* Terms Text */
+  .terms-text {
+    font-size: 0.8rem;
+    color: #666;
+    margin-top: 10px;
+    text-align: center;
+  }
+  

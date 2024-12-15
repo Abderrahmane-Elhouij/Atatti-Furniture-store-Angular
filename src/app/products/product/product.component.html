@@ -15,7 +15,7 @@
     </div>
     
     <div class="absolute bottom-[90px] left-1/2 transform -translate-x-1/2 flex gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-      <a href="#" class="text-sm bg-black text-white p-2 h-8 rounded-md">
+      <a [routerLink]="['/products', product.id]" routerLinkActive="router-link-active" class="text-sm bg-black text-white p-2 h-8 rounded-md">
         <fa-icon [icon]="faEye"></fa-icon>
       </a>
       <a href="#" class="text-sm bg-black text-white p-2 h-8 rounded-md">
