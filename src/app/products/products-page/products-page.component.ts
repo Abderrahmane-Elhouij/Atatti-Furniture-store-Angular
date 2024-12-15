@@ -64,7 +64,6 @@ export class ProductsPageComponent {
   tags = ["seating", "storage", "chair", "drawer", "bed", "bedside table", "coffee table", "dining table", "desk", "office", "modern", "classic", "luxury"];
 
 
-  //Tag filter
 
   selectedTag: string | null = null;
   selectedColor: string | null = null;
@@ -72,40 +71,38 @@ export class ProductsPageComponent {
 
   paramTag = input.required();
 
-  // Pagination logic
+  
   filteredProducts: any[] = [];
   paginatedProducts: any[] = [];
-  itemsPerPage: number = 10; // Number of items per page
+  itemsPerPage: number = 10; 
   currentPage: number = 0;
 
-  // Get total pages based on filtered products
+ 
   get totalPages(): number[] {
     return Array.from({ length: Math.ceil(this.filteredProducts.length / this.itemsPerPage) }, (_, i) => i);
   }
 
   ngOnInit(): void {
-    // Initialize with all products first
+    
     this.updateFilteredAndSortedProducts(null, null, null);
   }
 
-  // Update paginated products based on the current page
   updatePaginatedProducts(): void {
     const startIndex = this.currentPage * this.itemsPerPage;
     const endIndex = startIndex + this.itemsPerPage;
     this.paginatedProducts = this.filteredProducts.slice(startIndex, endIndex);
   }
 
-  // Set the current page and update paginated products
   setCurrentPage(page: number): void {
     this.currentPage = page;
     this.updatePaginatedProducts();
   }
 
-  // Update the filtered and sorted products and handle pagination
+
   updateFilteredAndSortedProducts(selectedTag: string | null, selectedColor: string | null, selectedFabric: string | null): void {
     this.filteredProducts = this.filterAndSortProducts(this.allProducts, selectedTag, selectedColor, selectedFabric);
-    this.currentPage = 0; // Reset to the first page after filtering
-    this.updatePaginatedProducts(); // Update the paginated view
+    this.currentPage = 0; 
+    this.updatePaginatedProducts();
   }
 
 
@@ -114,6 +111,7 @@ export class ProductsPageComponent {
   //   this.filteredProducts = this.filterAndSortProducts(this.allProducts, this.selectedTag, this.selectedColor, this.selectedFabric);
 
   // }
+
   minValue = 100;
   maxValue = 1000;
 
@@ -125,11 +123,11 @@ export class ProductsPageComponent {
       const [min, max] = priceMatch.map(price => parseFloat(price.replace(/[,£]/g, '')));
       return [min, max];
     }
-    return [0, Infinity]; // Default range if parsing fails
+    return [0, Infinity]; 
   }
 
   selectTag(tag: string): void {
-    this.selectedTag = this.selectedTag === tag ? null : tag; // Toggle selection
+    this.selectedTag = this.selectedTag === tag ? null : tag; 
     this.updateFilteredAndSortedProducts(this.selectedTag, this.selectedColor, this.selectedFabric);
   }
 
@@ -142,7 +140,7 @@ export class ProductsPageComponent {
     const allProducts: any[] = [];
     const [minPrice, maxPrice] = this.extractPriceRange(this.priceRange);
 
-    // Recursive function to collect all products
+    
     function collectProducts(obj: any) {
       if (Array.isArray(obj)) {
         allProducts.push(...obj);
@@ -154,7 +152,7 @@ export class ProductsPageComponent {
     collectProducts(products);
 
     if (selectedTag || selectedColor || selectedFabric || this.priceRange) {
-      // Filter products by the provided criteria
+      
       return allProducts.filter(item => {
         const tags = item.tags || [];
         const matchesTag = selectedTag ? tags.includes(selectedTag) : true;
@@ -165,28 +163,24 @@ export class ProductsPageComponent {
         return matchesTag && matchesColor && matchesFabric && matchesPrice;
       });
     } else {
-      // Shuffle the array randomly if no criteria are provided
+    
       return allProducts.sort(() => Math.random() - 0.5);
     }
   }
 
-  //Price Filter
+  
   onPriceChange(event: any) {
-    const newValue = event.target.value; // Get the current slider value
-    const [currentMin, currentMax] = this.extractPriceRange(this.priceRange); // Extract min and max
+    const newValue = event.target.value; 
+    const [currentMin, currentMax] = this.extractPriceRange(this.priceRange);
 
-    // Determine if newValue should update min or max
     if (newValue < currentMin) {
-      // Update minValue if the new value is less than the current min
       this.minValue = newValue;
-      this.maxValue = currentMax; // Keep the max unchanged
+      this.maxValue = currentMax; 
     } else if (newValue > currentMax) {
-      // Update maxValue if the new value is greater than the current max
+     
       this.maxValue = newValue;
-      this.minValue = currentMin; // Keep the min unchanged
+      this.minValue = currentMin; 
     } else {
-      // Handle the case where newValue is between currentMin and currentMax
-      // Determine whether to adjust min or max based on proximity to current values
       const diffToMin = Math.abs(newValue - currentMin);
       const diffToMax = Math.abs(newValue - currentMax);
 
@@ -197,30 +191,30 @@ export class ProductsPageComponent {
       }
     }
 
-    // Update the price range string
+    
     this.priceRange = `£${this.minValue} - £${this.maxValue}`;
+    
   }
 
 
   filterPrice(){
     this.filteredProducts = this.filterAndSortProducts(this.allProducts, this.selectedTag, this.selectedColor, this.selectedFabric);
+    this.updateFilteredAndSortedProducts(this.selectedTag, this.selectedColor, this.selectedFabric);
   }
 
-  // Toggle the selected color
+  
   toggleColor(colorName: string) {
     this.selectedColor = this.selectedColor === colorName ? null : colorName;
-    console.log('Selected color:', this.selectedColor); // Optional: Debug log
+    console.log('Selected color:', this.selectedColor); 
     this.filteredProducts = this.filterAndSortProducts(this.allProducts, this.selectedTag, this.selectedColor, this.selectedFabric);
     this.updateFilteredAndSortedProducts(this.selectedTag, this.selectedColor, this.selectedFabric);
   }
 
 
-  //Fabric filter
-
-  // Function to set the selected fabric
+ 
   toggleFabric(fabricName: string) {
     this.selectedFabric = this.selectedFabric === fabricName ? null : fabricName;
-    console.log('Selected color:', this.selectedColor); // Optional: Debug log
+    console.log('Selected color:', this.selectedColor); 
     this.filteredProducts = this.filterAndSortProducts(this.allProducts, this.selectedTag, this.selectedColor, this.selectedFabric)
     this.updateFilteredAndSortedProducts(this.selectedTag, this.selectedColor, this.selectedFabric);
 
@@ -238,7 +232,7 @@ export class ProductsPageComponent {
       case 'Swatches fabric': return 'bg-gray-900';
       case 'Tow sad wollen fabric': return 'bg-gray-300';
       case 'Wollen fabric': return 'bg-gray-100';
-      default: return 'bg-gray-300'; // Default color
+      default: return 'bg-gray-300'; 
     }
   }
 
