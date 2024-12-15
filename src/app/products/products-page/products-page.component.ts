@@ -7,7 +7,6 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MockDataService } from '../../services/mock-data.service';
 import { ProductComponent } from '../product/product.component';
 
-
 @Component({
   selector: 'app-products-page',
   imports: [MatSliderModule, CommonModule, MatListModule, MatCheckboxModule, ProductComponent],
@@ -120,7 +119,6 @@ export class ProductsPageComponent {
 
   priceRange: string = `£${this.minValue} - £${this.maxValue}`;
 
-
   extractPriceRange(priceRange: string): [number, number] {
     const priceMatch = priceRange.match(/£(\d+(?:,\d{3})*(?:\.\d+)?)/g);
     if (priceMatch) {
@@ -130,17 +128,10 @@ export class ProductsPageComponent {
     return [0, Infinity]; // Default range if parsing fails
   }
 
-
-
-
   selectTag(tag: string): void {
     this.selectedTag = this.selectedTag === tag ? null : tag; // Toggle selection
     this.updateFilteredAndSortedProducts(this.selectedTag, this.selectedColor, this.selectedFabric);
   }
-
-
-
-
 
   filterAndSortProducts(
     products: any,
@@ -179,11 +170,6 @@ export class ProductsPageComponent {
     }
   }
 
-
-
-
-
-
   //Price Filter
   onPriceChange(event: any) {
     const newValue = event.target.value; // Get the current slider value
@@ -213,31 +199,12 @@ export class ProductsPageComponent {
 
     // Update the price range string
     this.priceRange = `£${this.minValue} - £${this.maxValue}`;
-
-
-    // // Debugging logs
-    // console.log("Current Min:", currentMin);
-    // console.log("Current Max:", currentMax);
-    // console.log("Updated Min:", this.minValue);
-    // console.log("Updated Max:", this.maxValue);
-    // console.log("Price Range:", this.priceRange);
-
-
-
   }
 
 
   filterPrice(){
-
-
-
     this.filteredProducts = this.filterAndSortProducts(this.allProducts, this.selectedTag, this.selectedColor, this.selectedFabric);
-
-
   }
-
-
-
 
   // Toggle the selected color
   toggleColor(colorName: string) {
