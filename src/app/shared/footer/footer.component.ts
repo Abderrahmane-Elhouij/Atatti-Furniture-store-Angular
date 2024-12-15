@@ -9,7 +9,6 @@ import { faFacebook, faInstagram, faLinkedin } from '@fortawesome/free-brands-sv
   standalone: true,
   imports: [FontAwesomeModule],
   templateUrl: './footer.component.html',
-  styleUrl: './footer.component.css',
   schemas: [CUSTOM_ELEMENTS_SCHEMA], // Add this line
 })
 export class FooterComponent {

@@ -14,6 +14,10 @@ export const routes: Routes = [
     loadChildren: () => import('./products/products.routes').then(mod => mod.routes),
   },
   {
+    path: 'cart',
+    loadComponent: () => import('./add-to-card/add-to-card.component').then(mod => mod.AddToCardComponent)
+  },
+  {
     path: '**',
     component: NotFoundComponent
   }
