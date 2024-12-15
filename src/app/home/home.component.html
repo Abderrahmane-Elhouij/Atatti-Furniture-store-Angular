@@ -1,13 +1,15 @@
 <div>
-  <div class="splide">
-    <div class="splide__track">
-      <ul class="splide__list">
-        <!-- Slide 1 -->
-        <li *ngIf="currentSlideIndex === 0" class="splide__slide">
-          <app-hero1></app-hero1>
-        </li>
-      </ul>
-    </div>
+  <div class="slider-container">
+    <!-- Render the current component dynamically -->
+    <ng-container *ngIf="currentComponent === 'hero1'">
+      <app-hero1></app-hero1>
+    </ng-container>
+    <ng-container *ngIf="currentComponent === 'hero2'">
+      <app-hero2></app-hero2>
+    </ng-container>
+    <ng-container *ngIf="currentComponent === 'hero3'">
+      <app-hero3></app-hero3>
+    </ng-container>
   </div>
 
   <div class="grid grid-cols-4 gap-4">

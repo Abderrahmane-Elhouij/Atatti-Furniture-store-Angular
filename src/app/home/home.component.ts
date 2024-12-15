@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { AfterViewInit, Component, inject } from '@angular/core';
 import Splide from '@splidejs/splide';
 import { ProductComponent } from '../products/product/product.component';
 import { MockDataService } from '../services/mock-data.service';
@@ -15,9 +15,38 @@ import { CommonModule } from '@angular/common';
   imports: [ProductComponent, CommonModule, AnimateFromViewportDirective, Hero1Component, Hero2Component, Hero3Component],
   standalone: true,
   templateUrl: './home.component.html',
+  styleUrl: './home.component.css',
   schemas: [CUSTOM_ELEMENTS_SCHEMA], // Add this line
 })
+
 export class HomeComponent {
+  
+
+ // List of components
+ components = ['hero1', 'hero2', 'hero3'];
+ currentComponent = 'hero1'; // Start with the first component
+ intervalId: any;
+
+ ngOnInit() {
+   // Start the interval
+   this.intervalId = setInterval(() => {
+     this.nextComponent();
+   }, 7000); // Change every 5 seconds
+ }
+
+ ngOnDestroy() {
+   // Clear the interval when the component is destroyed
+   if (this.intervalId) {
+     clearInterval(this.intervalId);
+   }
+ }
+
+ nextComponent() {
+   // Find the next component in the array
+   const currentIndex = this.components.indexOf(this.currentComponent);
+   const nextIndex = (currentIndex + 1) % this.components.length;
+   this.currentComponent = this.components[nextIndex];
+ }
 
   private productsService = inject(MockDataService);
   products = this.productsService.getData();
@@ -45,30 +74,6 @@ export class HomeComponent {
 
 
 
-  // Track the current slide
-  slides = ['hero1', 'hero2', 'hero3'];
-  currentSlideIndex = 0;
+  
 
-  ngAfterViewInit(): void {
-    this.initializeSplide();
-  }
-
-  initializeSplide(): void {
-    new Splide('.splide', {
-      type       : 'loop',       // Makes it continuous
-      perPage    : 1,            // Show only one slide at a time
-      perMove    : 1,            // Move one slide at a time
-      autoplay  : true,          // Starts automatically
-      interval  : 3000,          // Delay between slides (in ms)
-      arrows    : false,         // Hide navigation arrows
-      pagination: false,         // Hide pagination
-      direction : 'rtl',         // Slide direction from right to left
-      speed     : 3000,          // Speed of the sliding effect
-    }).mount();
-  }
-
-  // Method to set the component for the current slide
-  getCurrentSlideComponent(): string {
-    return this.slides[this.currentSlideIndex];
-  }
 }

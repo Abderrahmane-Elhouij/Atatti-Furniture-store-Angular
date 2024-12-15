@@ -43,17 +43,17 @@
         hsla(238, 0%, 76%, 0.15) 5px,
         hsla(238, 0%, 76%, 0.15) 8px
       ),
-      linear-gradient(90deg, rgb(30, 46, 60), rgb(30, 46, 60));
+      linear-gradient(90deg, rgb(19, 24, 29), rgba(6, 16, 26, 0.898));
   "
 >
-  <div class="w-3/4 ml-28 pt-24 align-middle mt-16">
+  <div class="w-1/4 ml-28 pt-24 align-middle mt-16">
     <p
       class="opacity-0 text-base text-white"
       appAnimateFromViewport
       [animationClass]="'animate-from-bottom-1'"
       [duration]="2"
     >
-      150$ - 200$
+      <label for="" class="line-through">287.49$</label> - 249.99$
     </p>
     <h1
       appAnimateFromViewport
@@ -61,7 +61,7 @@
       [duration]="5"
       class="opacity-0 text-white font-nunito font-bold text-5xl my-4"
     >
-      Modern Chair
+      Modern Armchair
     </h1>
     <p
       appAnimateFromViewport
@@ -81,6 +81,7 @@
       appAnimateFromViewport
       [animationClass]="'animate-from-bottom-5'"
       class="opacity-0 bg-white text-black font-bold py-2 px-10 rounded-full"
+      [routerLink]="['/products']" routerLinkActive="router-link-active"
     >
       Shop Now
     </button>
