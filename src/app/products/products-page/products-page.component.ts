@@ -76,7 +76,7 @@ export class ProductsPageComponent {
   // Pagination logic
   filteredProducts: any[] = [];
   paginatedProducts: any[] = [];
-  itemsPerPage: number =16; // Number of items per page
+  itemsPerPage: number = 10; // Number of items per page
   currentPage: number = 0;
 
   // Get total pages based on filtered products
@@ -106,7 +106,7 @@ export class ProductsPageComponent {
   updateFilteredAndSortedProducts(selectedTag: string | null, selectedColor: string | null, selectedFabric: string | null): void {
     this.filteredProducts = this.filterAndSortProducts(this.allProducts, selectedTag, selectedColor, selectedFabric);
     this.currentPage = 0; // Reset to the first page after filtering
-    this.updatePaginatedProducts(); // Apply pagination after filtering
+    this.updatePaginatedProducts(); // Update the paginated view
   }
 
 
@@ -119,7 +119,7 @@ export class ProductsPageComponent {
   maxValue = 1000;
 
   priceRange: string = `£${this.minValue} - £${this.maxValue}`;
-  
+
 
   extractPriceRange(priceRange: string): [number, number] {
     const priceMatch = priceRange.match(/£(\d+(?:,\d{3})*(?:\.\d+)?)/g);
@@ -134,10 +134,8 @@ export class ProductsPageComponent {
 
 
   selectTag(tag: string): void {
-    this.selectedTag = this.selectedTag === tag ? null : tag;
-    console.log(this.selectedTag);
-    this.filteredProducts = this.filterAndSortProducts(this.allProducts, this.selectedTag, this.selectedColor, this.selectedFabric);
-
+    this.selectedTag = this.selectedTag === tag ? null : tag; // Toggle selection
+    this.updateFilteredAndSortedProducts(this.selectedTag, this.selectedColor, this.selectedFabric);
   }
 
 
@@ -183,14 +181,14 @@ export class ProductsPageComponent {
 
 
 
-  
+
 
 
   //Price Filter
   onPriceChange(event: any) {
     const newValue = event.target.value; // Get the current slider value
     const [currentMin, currentMax] = this.extractPriceRange(this.priceRange); // Extract min and max
-  
+
     // Determine if newValue should update min or max
     if (newValue < currentMin) {
       // Update minValue if the new value is less than the current min
@@ -205,18 +203,18 @@ export class ProductsPageComponent {
       // Determine whether to adjust min or max based on proximity to current values
       const diffToMin = Math.abs(newValue - currentMin);
       const diffToMax = Math.abs(newValue - currentMax);
-  
+
       if (diffToMin < diffToMax) {
         this.minValue = newValue;
       } else {
         this.maxValue = newValue;
       }
     }
-  
+
     // Update the price range string
     this.priceRange = `£${this.minValue} - £${this.maxValue}`;
-  
-    
+
+
     // // Debugging logs
     // console.log("Current Min:", currentMin);
     // console.log("Current Max:", currentMax);
@@ -224,20 +222,20 @@ export class ProductsPageComponent {
     // console.log("Updated Max:", this.maxValue);
     // console.log("Price Range:", this.priceRange);
 
-    
+
 
   }
 
 
   filterPrice(){
 
-    
-    
+
+
     this.filteredProducts = this.filterAndSortProducts(this.allProducts, this.selectedTag, this.selectedColor, this.selectedFabric);
 
 
   }
-  
+
 
 
 
@@ -246,7 +244,7 @@ export class ProductsPageComponent {
     this.selectedColor = this.selectedColor === colorName ? null : colorName;
     console.log('Selected color:', this.selectedColor); // Optional: Debug log
     this.filteredProducts = this.filterAndSortProducts(this.allProducts, this.selectedTag, this.selectedColor, this.selectedFabric);
-
+    this.updateFilteredAndSortedProducts(this.selectedTag, this.selectedColor, this.selectedFabric);
   }
 
 
@@ -256,7 +254,8 @@ export class ProductsPageComponent {
   toggleFabric(fabricName: string) {
     this.selectedFabric = this.selectedFabric === fabricName ? null : fabricName;
     console.log('Selected color:', this.selectedColor); // Optional: Debug log
-    this.filteredProducts = this.filterAndSortProducts(this.allProducts, this.selectedTag, this.selectedColor, this.selectedFabric);
+    this.filteredProducts = this.filterAndSortProducts(this.allProducts, this.selectedTag, this.selectedColor, this.selectedFabric)
+    this.updateFilteredAndSortedProducts(this.selectedTag, this.selectedColor, this.selectedFabric);
 
   }
 
