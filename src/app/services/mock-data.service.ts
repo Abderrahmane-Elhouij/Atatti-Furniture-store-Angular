@@ -190,7 +190,7 @@ export class MockDataService {
               description: "A sleek and modern sofa with a minimalist design and comfortable seating.",
               price: 299.99,
               tags: ["modern", "sofa", "minimalist", "seating"],
-              image: "/assets/images/takt_C4_sofa.jpg",
+              image: "/assets/images/Takt_C4_sofa.jpg",
               threeDModel: "assets/3dModels/takt_C4_sofa.glb",
               quantity: 14
           }

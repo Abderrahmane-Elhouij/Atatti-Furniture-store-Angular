@@ -1,124 +1,151 @@
 <div>
-    <header class="flex flex-col h-96 items-center justify-center text-center py-4 bg-gray-100" [ngStyle]="{'background-image': 'url(/Header_Image2.jpg)', 'background-repeat': 'no-repeat', 'background-size': 'cover', 'background-position': 'center'}">
-        <h1 class="text-4xl font-bold">Shop Section</h1>
-        <div class="flex gap-4 mt-3">
-            <h4 class="text-sm text-gray-500">Home</h4>
-            <h4 class="text-sm text-gray-500">|</h4>     
-            <h4 class="text-sm text-gray-500">Shop</h4>
-            
-        </div>
-    </header>   
-
-    <div class="flex space-x-8 mt-16">
-        <!-- Filters Section -->
-        <div class="flex-1 w-1/5 p-5">
-            <h4 class="text-xl font-semibold text-gray-800 mb-4">Filters</h4>
-
-    
-            <div class="space-y-2 my-6">
-                <span class="text-sm font-medium">Filter by color</span>
-                <div *ngFor="let color of colors" (click)="toggleColor(color.name)" class="flex items-center space-x-4 hover:cursor-pointer">
-                  <div
-                    [ngStyle]="{ 'background-color': color.hex }"
-                    class="w-4 h-4 rounded-full border"
-                    [ngClass]="{ 'border-gray-200': selectedColor !== color.name, 'border-black': selectedColor === color.name }"
-                    
-                  ></div>
-                  <span class="flex-grow text-sm">{{ color.name }}</span>
-                  <span class="text-sm text-gray-500">{{ color.count | number: '2.0' }}</span>
-                </div>
-              </div>
-              
-    
-            <hr>
-    
-            <div class="space-y-2 my-6">
-                <span class="text-sm font-medium">Filter by fabric</span>
-                <div 
-                  *ngFor="let fabric of fabricOptions" 
-                  class="flex items-center space-x-4 hover:cursor-pointer" 
-                  (click)="toggleFabric(fabric.name)"
-                >
-                  <div
-                    [ngClass]="[getFabricColor(fabric.name), 'w-4 h-4 rounded-full border', selectedFabric === fabric.name ? 'border-black' : 'border-gray-200']"
-                  ></div>
-                  <span class="flex-grow text-sm">{{ fabric.name }}</span>
-                  <span class="text-sm text-gray-500">{{ fabric.count | number: '2.0' }}</span>
-                </div>
-              </div>
-              
-              
-            
-    
-            <hr>
-    
-            <div class="flex-col my-6">
-                <span class="text-sm font-medium">Filter by price</span>
-                <div class="w-full max-w-4xl mx-auto">
-                    <mat-slider 
-                      showTickMarks 
-                      discrete 
-                      min="100" 
-                      max="2000" 
-                      step="100" 
-                      (change)="onPriceChange($event)"
-                      class="w-full"
-                      thumbLabel
-                      showTicks
-                      tickInterval="100"
-                    >
-                      <input value="100" matSliderStartThumb>
-                      <input value="500" matSliderEndThumb >
-                    </mat-slider>
-                  </div>
-                  
-                <div class="flex justify-between">
-                    <span class="text-gray-600 ml-2 text-sm">{{ priceRange }}</span>
-                    <button 
-                    mat-raised-button 
-                    color="primary" 
-                    
-                    class="w-20 border-2 scale-75 border-black hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500"
-                  >
-                    <span class="text-sm">FILTER</span>
-                  </button>                  
-                </div>
-            </div>
-    
-            <hr>
-    
-            <div class="space-y-2 my-6">
-                <span class="text-sm font-medium">Filter by tags</span>
-                <div class="flex flex-wrap gap-2">
-                    <button
-                        *ngFor="let tag of tags"
-                        (click)="selectTag(tag)"
-                        [ngClass]="{
-                          'bg-gray-200 text-gray-700': selectedTag !== tag,
-                          'bg-gray-700 text-white': selectedTag === tag
-                        }"
-                        class="px-4 py-1 rounded-sm border border-gray-300 text-sm"
-                    >
-                        {{ tag }}
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Products Section -->
-         <div class="w-4/5 mt-12 p-5">
-            <span class="text-sm font-medium text-slate-600">Showing 1-10 of 10 results</span>
-            <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 ">           
-                @for (product of filteredProducts; track $index) {
-                    <app-product  [height]="'280px'" [product]="product"></app-product>
-                }
-            </div>
-         </div>
-        
-
-
+  <header
+    class="flex flex-col h-96 items-center justify-center text-center py-4 bg-gray-100"
+    [ngStyle]="{
+      'background-image': 'url(/Header_Image2.jpg)',
+      'background-repeat': 'no-repeat',
+      'background-size': 'cover',
+      'background-position': 'center'
+    }"
+  >
+    <h1 class="text-4xl font-bold">Shop Section</h1>
+    <div class="flex gap-4 mt-3">
+      <h4 class="text-sm text-gray-500">Home</h4>
+      <h4 class="text-sm text-gray-500">|</h4>
+      <h4 class="text-sm text-gray-500">Shop</h4>
     </div>
-    
+  </header>
 
+  <div class="flex space-x-8 mt-16">
+    <!-- Filters Section -->
+    <div class="flex-1 w-1/5 p-5">
+      <h4 class="text-xl font-semibold text-gray-800 mb-4">Filters</h4>
+
+      <div class="space-y-2 my-6">
+        <span class="text-sm font-medium">Filter by color</span>
+        <div
+          *ngFor="let color of colors"
+          (click)="toggleColor(color.name)"
+          class="flex items-center space-x-4 hover:cursor-pointer"
+        >
+          <div
+            [ngStyle]="{ 'background-color': color.hex }"
+            class="w-4 h-4 rounded-full border"
+            [ngClass]="{
+              'border-gray-200': selectedColor !== color.name,
+              'border-black': selectedColor === color.name
+            }"
+          ></div>
+          <span class="flex-grow text-sm">{{ color.name }}</span>
+          <span class="text-sm text-gray-500">{{
+            color.count | number : "2.0"
+          }}</span>
+        </div>
+      </div>
+
+      <hr />
+
+      <div class="space-y-2 my-6">
+        <span class="text-sm font-medium">Filter by fabric</span>
+        <div
+          *ngFor="let fabric of fabricOptions"
+          class="flex items-center space-x-4 hover:cursor-pointer"
+          (click)="toggleFabric(fabric.name)"
+        >
+          <div
+            [ngClass]="[
+              getFabricColor(fabric.name),
+              'w-4 h-4 rounded-full border',
+              selectedFabric === fabric.name
+                ? 'border-black'
+                : 'border-gray-200'
+            ]"
+          ></div>
+          <span class="flex-grow text-sm">{{ fabric.name }}</span>
+          <span class="text-sm text-gray-500">{{
+            fabric.count | number : "2.0"
+          }}</span>
+        </div>
+      </div>
+
+      <hr />
+
+      <div class="flex-col my-6">
+        <span class="text-sm font-medium">Filter by price</span>
+        <div class="w-full max-w-4xl mx-auto">
+          <mat-slider
+            showTickMarks
+            discrete
+            min="100"
+            max="2000"
+            step="100"
+            (change)="onPriceChange($event)"
+            class="w-full"
+            thumbLabel
+            showTicks
+            tickInterval="100"
+          >
+            <input value="100" matSliderStartThumb />
+            <input value="500" matSliderEndThumb />
+          </mat-slider>
+        </div>
+
+        <div class="flex justify-between">
+          <span class="text-gray-600 ml-2 text-sm">{{ priceRange }}</span>
+          <button
+            mat-raised-button
+            color="primary"
+            class="w-20 border-2 scale-75 border-black hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500"
+          >
+            <span class="text-sm">FILTER</span>
+          </button>
+        </div>
+      </div>
+
+      <hr />
+
+      <div class="space-y-2 my-6">
+        <span class="text-sm font-medium">Filter by tags</span>
+        <div class="flex flex-wrap gap-2">
+          <button
+            *ngFor="let tag of tags"
+            (click)="selectTag(tag)"
+            [ngClass]="{
+              'bg-gray-200 text-gray-700': selectedTag !== tag,
+              'bg-gray-700 text-white': selectedTag === tag
+            }"
+            class="px-4 py-1 rounded-sm border border-gray-300 text-sm"
+          >
+            {{ tag }}
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Products Section -->
+    <div class="flex-4 w-4/5 p-5">
+      <div
+      class="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8"
+      >
+      <ng-container *ngFor="let product of paginatedProducts; let i = index">
+        <app-product [height]="'280px'" [product]="product"></app-product>
+      </ng-container>
+      </div>
+
+      <!-- Pagination Controls -->
+      <div class="flex justify-center items-center mt-6 space-x-2">
+      <button
+        *ngFor="let page of totalPages; let pageIndex = index"
+        (click)="setCurrentPage(pageIndex)"
+        [ngClass]="{
+        'bg-gray-700 text-white': currentPage === pageIndex,
+        'bg-gray-200 text-gray-700': currentPage !== pageIndex
+        }"
+        class="px-4 py-2 rounded border border-gray-300"
+      >
+        {{ pageIndex + 1 }}
+      </button>
+      </div>
+    </div>
+  </div>
 </div>
-
