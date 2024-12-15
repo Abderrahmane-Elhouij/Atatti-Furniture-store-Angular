@@ -28,12 +28,12 @@ export class ProductsPageComponent {
 
   drawers = this.storage.drawers;
 
-  ngOnInit(): void {
-    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-    //Add 'implements OnInit' to the class.
-    console.log(this.chairs);
+  // ngOnInit(): void {
+  //   //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+  //   //Add 'implements OnInit' to the class.
+  //   console.log(this.chairs);
 
-  }
+  // }
 
 
 
@@ -47,9 +47,9 @@ export class ProductsPageComponent {
     { name: 'orange', hex: '#FFA500', count: 4 },
     { name: 'silver', hex: '#C0C0C0', count: 24 },
     { name: 'purple', hex: '#800080', count: 2 },
-    
+
   ];
-  
+
 
   fabricOptions: FabricOption[] = [
     { name: 'wood', count: 5 },
@@ -58,7 +58,7 @@ export class ProductsPageComponent {
     { name: 'oak', count: 23 },
     { name: 'marble', count: 33 },
     { name: 'cotton', count: 84 },
-   
+
 
   ];
 
@@ -72,6 +72,42 @@ export class ProductsPageComponent {
   selectedFabric: string | null = null;
 
   paramTag = input.required();
+
+  // Pagination logic
+  filteredProducts: any[] = [];
+  paginatedProducts: any[] = [];
+  itemsPerPage: number =16; // Number of items per page
+  currentPage: number = 0;
+
+  // Get total pages based on filtered products
+  get totalPages(): number[] {
+    return Array.from({ length: Math.ceil(this.filteredProducts.length / this.itemsPerPage) }, (_, i) => i);
+  }
+
+  ngOnInit(): void {
+    // Initialize with all products first
+    this.updateFilteredAndSortedProducts(null, null, null);
+  }
+
+  // Update paginated products based on the current page
+  updatePaginatedProducts(): void {
+    const startIndex = this.currentPage * this.itemsPerPage;
+    const endIndex = startIndex + this.itemsPerPage;
+    this.paginatedProducts = this.filteredProducts.slice(startIndex, endIndex);
+  }
+
+  // Set the current page and update paginated products
+  setCurrentPage(page: number): void {
+    this.currentPage = page;
+    this.updatePaginatedProducts();
+  }
+
+  // Update the filtered and sorted products and handle pagination
+  updateFilteredAndSortedProducts(selectedTag: string | null, selectedColor: string | null, selectedFabric: string | null): void {
+    this.filteredProducts = this.filterAndSortProducts(this.allProducts, selectedTag, selectedColor, selectedFabric);
+    this.currentPage = 0; // Reset to the first page after filtering
+    this.updatePaginatedProducts(); // Apply pagination after filtering
+  }
 
 
   // if(paramTag){
@@ -95,7 +131,6 @@ export class ProductsPageComponent {
   }
 
 
-  filteredProducts: any[] = this.filterAndSortProducts(this.allProducts, this.selectedTag, this.selectedColor, this.selectedFabric);;
 
 
   selectTag(tag: string): void {
