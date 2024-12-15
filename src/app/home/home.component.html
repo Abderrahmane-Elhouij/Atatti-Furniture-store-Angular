@@ -1,13 +1,13 @@
 <div>
   <div class="slider-container">
     <!-- Render the current component dynamically -->
-    <ng-container *ngIf="currentComponent === 'hero1'">
+    <ng-container [@fadeAnimation] class="fade" *ngIf="currentComponent === 'hero1'">
       <app-hero1></app-hero1>
     </ng-container>
-    <ng-container *ngIf="currentComponent === 'hero2'">
+    <ng-container [@fadeAnimation] class="fade" *ngIf="currentComponent === 'hero2'">
       <app-hero2></app-hero2>
     </ng-container>
-    <ng-container *ngIf="currentComponent === 'hero3'">
+    <ng-container [@fadeAnimation] class="fade" *ngIf="currentComponent === 'hero3'">
       <app-hero3></app-hero3>
     </ng-container>
   </div>
