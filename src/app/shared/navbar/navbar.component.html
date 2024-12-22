@@ -1,21 +1,43 @@
 <header class="bg-gray-100 text-white py-4 px-4">
   <div class="flex justify-end items-center">
     <div class="flex space-x-4">
-      <a routerLink="./" class="hover:underline text-gray-900">Home</a>
-      <a routerLink="products" class="hover:underline text-gray-900"
-        >Products</a
+      <a
+        routerLink="./"
+        class="relative text-gray-900 group"
       >
-      <a routerLink="" class="hover:underline text-gray-900">Wishlist</a>
+        Home
+        <span
+          class="absolute left-0 bottom-0 w-full h-[2px] bg-gray-900 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"
+        ></span>
+      </a>
+      <a
+        routerLink="products"
+        class="relative text-gray-900 group"
+      >
+        Products
+        <span
+          class="absolute left-0 bottom-0 w-full h-[2px] bg-gray-900 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"
+        ></span>
+      </a>
+      <a
+        routerLink=""
+        class="relative text-gray-900 group"
+      >
+        Wishlist
+        <span
+          class="absolute left-0 bottom-0 w-full h-[2px] bg-gray-900 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"
+        ></span>
+      </a>
     </div>
     <div class="flex space-x-4 ml-4">
       <button class="text-gray-900 hover:text-gray-400">
-        <fa-icon [icon]="faSearch" />
+        <fa-icon [icon]="faSearch"></fa-icon>
       </button>
       <button class="text-gray-900 hover:text-gray-400">
-        <fa-icon [icon]="faUser" />
+        <fa-icon [icon]="faUser"></fa-icon>
       </button>
       <button routerLink="cart" class="text-gray-900 hover:text-gray-400">
-        <fa-icon [icon]="faCart" />
+        <fa-icon [icon]="faCart"></fa-icon>
         <span class="relative">
           <span
             class="bg-red-500 text-white text-xs font-bold rounded-full px-0.5 absolute top-0 left-0 transform -translate-x-1/2 -translate-y-1/2"
