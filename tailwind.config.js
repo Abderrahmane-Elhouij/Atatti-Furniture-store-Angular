@@ -19,6 +19,7 @@ module.exports = {
         'from-bottom-4': 'fromBottom 1s ease-in 0.9s forwards',  
         'from-bottom-5': 'fromBottom 1s ease-in 1.2s forwards',  
 
+        'slide-down': 'slideDown 0.5s ease-out',
 
       },   
       keyframes: {
@@ -34,6 +35,10 @@ module.exports = {
           '0%': { transform: 'translateY(40px)', opacity: '0' },  // Start off-screen with no opacity
           '70%': { transform: 'translateY(10px)', opacity: '0.8' }, // Smoothly approach the final position
           '100%': { transform: 'translateY(0)', opacity: '1' },    // Final position with full opacity
+        },
+        slideDown: {
+          '0%': { transform: 'translateY(-100%)', opacity: '0' },
+          '100%': { transform: 'translateY(0)', opacity: '1' },
         },
       },
       

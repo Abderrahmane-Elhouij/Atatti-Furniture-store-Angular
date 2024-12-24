@@ -10,6 +10,7 @@
 html,
 body {
   height: 100%;
+  scroll-behavior: smooth;
 }
 body {
   margin: 0;
@@ -23,4 +24,15 @@ model-viewer::part(loading-indicator) {
 #model {
   --progress-bar-color: none;
   --progress-bar-height: 0px;
+}
+
+/* app.component.css */
+#navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  color: white;
+  padding: 1rem;
+  transition: top 0.3s ease-out; /* Smooth transition */
 }

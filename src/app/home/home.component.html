@@ -104,12 +104,12 @@
     </p>
   </div>
   }@placeholder {
-  <p>huh</p>
+  <p>3D</p>
 
   }
 
   <div class="grid grid-cols-2 h-[550px] w-full gap-0">
-    <div class="bg-[#DBE2EF] flex items-center justify-center">
+    <div class="bg-[#DBE2EF] p-16 flex items-center justify-center">
       <div class="ml-8">
         <p
           appAnimateFromViewport
@@ -145,10 +145,13 @@
       @defer{
       <model-viewer
         src="assets/3dModels/blue_bed.glb"
+        interaction-prompt="none"
         alt="A 3D model"
         camera-controls
+        disable-zoom
         camera-orbit="0deg 75deg 4.5m"
         auto-rotate
+        disable-pan 
         style="width: 100%; height: 400px"
         id="model"
       >
@@ -157,7 +160,7 @@
       <p class="text-white">Blue bed</p>
       }
     </div>
-    <div class="bg-[#112D4E] flex items-center justify-center">
+    <div class="bg-[#112D4E] p-16 flex items-center justify-center">
       <div class="ml-8">
         <p
           appAnimateFromViewport
@@ -185,10 +188,13 @@
       </div>
       @defer{
       <model-viewer
-        src="assets/3dModels/caster_drawer.glb"
+        src="assets/3dModels/latawn_drawer.glb"
+        interaction-prompt="none"
         alt="A 3D model"
         camera-controls
         auto-rotate
+        disable-zoom
+        disable-pan 
         loading="eager"
         style="width: 100%; height: 400px"
         id="model"
