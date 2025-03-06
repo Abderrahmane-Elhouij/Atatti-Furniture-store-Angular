@@ -10,5 +10,5 @@ import { RouterOutlet } from '@angular/router';
   imports: [FooterComponent, NavbarComponent, RouterOutlet]
 })
 export class AppComponent {
-  title = 'tutorial-est';
+  title = 'Atatti';
 }
