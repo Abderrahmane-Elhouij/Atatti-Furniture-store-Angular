@@ -11,21 +11,26 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   login(credentials: any) {
-    return this.http.post(`${this.apiUrl}/login`, credentials).pipe(
-      map((res: any) => {
-        console.log(res);
-        localStorage.setItem('token', res.token);
-        console.log(localStorage.getItem('token'));
-        return res;
-      })
-    );
+    // Ensure credentials are sent so the browser can store the HttpOnly cookie
+    return this.http.post(`${this.apiUrl}/login`, credentials, { withCredentials: true })
+      .pipe(
+        map((res: any) => {
+          console.log('Login successful', res);
+          // No need to manually store the token since it is handled by the browser's cookie storage.
+          return res;
+        })
+      );
   }
 
-  isLoggedIn() {
-    return !!localStorage.getItem('token');
-  }
+  // Option 1: Check login status by calling a protected endpoint
+  // isLoggedIn() {
+  //   // For example, if you have an endpoint that returns user details when authenticated:
+  //   return this.http.get(`${this.apiUrl}/profile`, { withCredentials: true });
+  // }
 
-  logout() {
-    localStorage.removeItem('token');
-  }
+  // logout() {
+  //   // To log out, you'll typically need to clear the cookie on the server side.
+  //   // For example, call a logout endpoint that instructs the backend to clear the cookie.
+  //   return this.http.post(`${this.apiUrl}/logout`, {}, { withCredentials: true });
+  // }
 }
