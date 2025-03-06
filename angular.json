@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "tutorial-est": {
+    "atatti": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/tutorial-est",
+            "outputPath": "dist/atatti",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -60,10 +60,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "tutorial-est:build:production"
+              "buildTarget": "atatti:build:production"
             },
             "development": {
-              "buildTarget": "tutorial-est:build:development"
+              "buildTarget": "atatti:build:development"
             }
           },
           "defaultConfiguration": "development"
