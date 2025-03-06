@@ -2,7 +2,8 @@ import { Routes } from '@angular/router';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './components/login/login.component';
-// import { ProductsComponent } from './products/products-page.component';
+import { AuthGuard } from './guards/auth.guard';
+
 export const routes: Routes = [
   {
     path: '',
@@ -25,7 +26,8 @@ export const routes: Routes = [
   },
   {
     path: 'checkout',
-    loadComponent: () => import('./checkout-component/checkout-component.component').then(mod => mod.CheckoutComponent)
+    loadComponent: () => import('./checkout-component/checkout-component.component').then(mod => mod.CheckoutComponent),
+    canActivate: [AuthGuard]
   },
   {
     path: '**',

@@ -1,21 +1,23 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { of, Observable } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  apiUrl = 'http://localhost:8080/api/users';
+  apiUrl = 'http://localhost:8080/api';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   login(credentials: any) {
     // Ensure credentials are sent so the browser can store the HttpOnly cookie
-    return this.http.post(`${this.apiUrl}/login`, credentials, { withCredentials: true })
+    return this.http.post(`${this.apiUrl}/users/login`, credentials, { withCredentials: true })
       .pipe(
         map((res: any) => {
-          console.log('Login successful', res);
+          // console.log('Login successful', res);
           // No need to manually store the token since it is handled by the browser's cookie storage.
           return res;
         })
@@ -23,10 +25,12 @@ export class AuthService {
   }
 
   // Option 1: Check login status by calling a protected endpoint
-  // isLoggedIn() {
-  //   // For example, if you have an endpoint that returns user details when authenticated:
-  //   return this.http.get(`${this.apiUrl}/profile`, { withCredentials: true });
-  // }
+  isLoggedIn(): Observable<boolean> {
+    return this.http.get(`${this.apiUrl}/test`, { withCredentials: true }).pipe(
+      map(() => true),
+      catchError(() => of(false)) 
+    );
+  }
 
   // logout() {
   //   // To log out, you'll typically need to clear the cookie on the server side.
