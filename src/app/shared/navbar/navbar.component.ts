@@ -1,7 +1,7 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faCartShopping, faSearch, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faCartShopping, faSearch, faUser, faSignIn } from '@fortawesome/free-solid-svg-icons';
 import { CartService } from '../../services/cart.service';
 
 @Component({
@@ -16,12 +16,13 @@ export class NavbarComponent {
 
   ngOnInit() {
     this.cartService.totalItems$.subscribe((data) => {
-      this.totalItems.set(data); 
+      this.totalItems.set(data);
     });
   }
 
   faSearch = faSearch;
   faUser = faUser;
   faCart = faCartShopping;
+  faSignIn = faSignIn
 
 }

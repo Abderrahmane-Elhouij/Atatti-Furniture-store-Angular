@@ -1,34 +1,34 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { of, Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { environment } from '../../environments/environment';
+import { ApiService } from './api.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  apiUrl = 'http://localhost:8080/api';
 
-  constructor(private http: HttpClient) { }
+  private http = inject(HttpClient);
+  private apiService = inject(ApiService);
+  private apiBaseUrl = environment.apiBaseUrl;
 
   login(credentials: any) {
-    // Ensure credentials are sent so the browser can store the HttpOnly cookie
-    return this.http.post(`${this.apiUrl}/users/login`, credentials, { withCredentials: true })
-      .pipe(
-        map((res: any) => {
-          // console.log('Login successful', res);
-          // No need to manually store the token since it is handled by the browser's cookie storage.
-          return res;
-        })
-      );
+    return this.apiService.login(credentials);
   }
+
+  signup(user: { name: string; login: string; password: string; }) {
+    return this.apiService.signup(user);
+  }
+
 
   // Option 1: Check login status by calling a protected endpoint
   isLoggedIn(): Observable<boolean> {
-    return this.http.get(`${this.apiUrl}/test`, { withCredentials: true }).pipe(
+    return this.http.get(`${this.apiBaseUrl}/test`, { withCredentials: true }).pipe(
       map(() => true),
-      catchError(() => of(false)) 
+      catchError(() => of(false))
     );
   }
 

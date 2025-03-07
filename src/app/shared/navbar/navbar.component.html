@@ -33,9 +33,6 @@
       <button class="text-gray-900 hover:text-gray-400">
         <fa-icon [icon]="faSearch"></fa-icon>
       </button>
-      <button routerLink="login" class="text-gray-900 hover:text-gray-400">
-        <fa-icon [icon]="faUser">¡</fa-icon> Login
-      </button>
       <button routerLink="cart" class="text-gray-900 hover:text-gray-400">
         <fa-icon [icon]="faCart"></fa-icon>
         <span class="relative">
@@ -45,6 +42,12 @@
             {{ totalItems() }}
           </span>
         </span>
+      </button>
+      <button routerLink="login" class="text-gray-900 hover:text-gray-400">
+        <fa-icon [icon]="faUser">¡</fa-icon> Login
+      </button>
+      <button routerLink="signup" class="text-gray-900 hover:text-gray-400">
+        <fa-icon [icon]="faSignIn">¡</fa-icon> Signup
       </button>
     </div>
   </div>
