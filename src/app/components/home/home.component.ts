@@ -1,10 +1,10 @@
 import { AfterViewInit, Component, inject } from '@angular/core';
 import Splide from '@splidejs/splide';
 import { ProductComponent } from '../products/product/product.component';
-import { MockDataService } from '../services/mock-data.service';
+import { MockDataService } from '../../services/mock-data.service';
 import '@google/model-viewer';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { AnimateFromViewportDirective } from '../animate-from-viewport.directive';import { AddToCardComponent } from '../add-to-card/add-to-card.component';
+import { AnimateFromViewportDirective } from '../../animate-from-viewport.directive';import { AddToCardComponent } from '../add-to-card/add-to-card.component';
 import { Hero1Component } from "./hero1/hero1.component";
 import { Hero2Component } from "./hero2/hero2.component";
 import { Hero3Component } from "./hero3/hero3.component";
@@ -20,7 +20,7 @@ import { CommonModule } from '@angular/common';
 })
 
 export class HomeComponent {
-  
+
 
  // List of components
  components = ['hero1', 'hero2', 'hero3'];
@@ -74,6 +74,6 @@ export class HomeComponent {
 
 
 
-  
+
 
 }

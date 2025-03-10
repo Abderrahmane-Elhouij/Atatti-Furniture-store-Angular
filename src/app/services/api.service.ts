@@ -11,7 +11,7 @@ export class ApiService {
   private apiBaseUrl = environment.apiBaseUrl;
   private http = inject(HttpClient);
 
-  login(credentials: any) {
+  login(credentials: { login: string; password: string; }) {
     // Ensure credentials are sent so the browser can store the HttpOnly cookie
     return this.http.post(`${this.apiBaseUrl}/users/login`, credentials, { withCredentials: true })
       .pipe(

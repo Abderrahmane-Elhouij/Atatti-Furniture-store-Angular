@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, inject} from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { FormsModule } from '@angular/forms';
@@ -10,12 +10,13 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
+  private authService = inject(AuthService);
+  private router = inject(Router);
+
   credentials = {
     name: '',
     password: '',
   };
-
-  constructor(private authService: AuthService, private router: Router) {}
 
   login() {
     this.authService.login(this.credentials).subscribe({

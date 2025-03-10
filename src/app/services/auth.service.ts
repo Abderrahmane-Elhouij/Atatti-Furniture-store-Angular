@@ -1,10 +1,10 @@
-import { inject, Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
-import { of, Observable } from 'rxjs';
-import { catchError } from 'rxjs/operators';
-import { environment } from '../../environments/environment';
-import { ApiService } from './api.service';
+import {inject, Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {map, shareReplay, startWith, switchMap, tap} from 'rxjs/operators';
+import {of, Observable, interval, BehaviorSubject, timer, throwError} from 'rxjs';
+import {catchError} from 'rxjs/operators';
+import {environment} from '../../environments/environment';
+import {ApiService} from './api.service';
 
 @Injectable({
   providedIn: 'root',
@@ -13,28 +13,57 @@ export class AuthService {
 
   private http = inject(HttpClient);
   private apiService = inject(ApiService);
-  private apiBaseUrl = environment.apiBaseUrl;
+  private apiBaseUrl = environment.apiBaseUrl
+  private isAuthenticatedSubject = new BehaviorSubject<boolean>(false);
+  isAuthenticated$ = this.isAuthenticatedSubject.asObservable();
 
-  login(credentials: any) {
-    return this.apiService.login(credentials);
+  constructor() {
+    // Initial check on app startup
+    this.checkAuthStatus().subscribe();
   }
 
-  signup(user: { name: string; login: string; password: string; }) {
-    return this.apiService.signup(user);
-  }
-
-
-  // Option 1: Check login status by calling a protected endpoint
-  isLoggedIn(): Observable<boolean> {
-    return this.http.get(`${this.apiBaseUrl}/test`, { withCredentials: true }).pipe(
-      map(() => true),
-      catchError(() => of(false))
+  login(credentials: any): Observable<boolean> {
+    return this.apiService.login(credentials).pipe(
+      tap(() => this.isAuthenticatedSubject.next(true))
     );
   }
 
-  // logout() {
-  //   // To log out, you'll typically need to clear the cookie on the server side.
-  //   // For example, call a logout endpoint that instructs the backend to clear the cookie.
-  //   return this.http.post(`${this.apiUrl}/logout`, {}, { withCredentials: true });
-  // }
+  signup(user: { name: string; login: string; password: string; }): Observable<boolean> {
+    return this.apiService.signup(user).pipe(
+      tap(() => this.isAuthenticatedSubject.next(true))
+    );
+  }
+
+  logout(): Observable<void> {
+    return this.http.post<void>(`${this.apiBaseUrl}/users/logout`, null, {
+      withCredentials: true // Include cookies in the request
+    }).pipe(
+      tap(() => {
+        // Update the authentication state
+        this.isAuthenticatedSubject.next(false);
+      })
+    );
+  }
+
+  checkAuthStatus(): Observable<boolean> {
+    return this.http.get(`${this.apiBaseUrl}/users/auth-status`, {
+      withCredentials: true,
+      observe: 'response' // Access full response
+    }).pipe(
+      map(response => {
+        const isAuthenticated = response.status === 204; // 204 = true
+        this.isAuthenticatedSubject.next(isAuthenticated);
+        return isAuthenticated;
+      }),
+      catchError(error => {
+        if (error.status === 401) { // Explicitly handle 401
+          this.isAuthenticatedSubject.next(false);
+          return of(false);
+        }
+        // Propagate other errors
+        return throwError(() => error);
+      })
+    );
+  }
+
 }

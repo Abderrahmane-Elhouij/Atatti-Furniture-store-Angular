@@ -1,10 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, input } from '@angular/core';
 import { MatSliderModule } from '@angular/material/slider';
-import { FabricOption } from '../../app.model';
+import { FabricOption } from '../../../app.model';
 import { MatListModule } from '@angular/material/list';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MockDataService } from '../../services/mock-data.service';
+import { MockDataService } from '../../../services/mock-data.service';
 import { ProductComponent } from '../product/product.component';
 
 @Component({
@@ -71,19 +71,19 @@ export class ProductsPageComponent {
 
   paramTag = input.required();
 
-  
+
   filteredProducts: any[] = [];
   paginatedProducts: any[] = [];
-  itemsPerPage: number = 10; 
+  itemsPerPage: number = 10;
   currentPage: number = 0;
 
- 
+
   get totalPages(): number[] {
     return Array.from({ length: Math.ceil(this.filteredProducts.length / this.itemsPerPage) }, (_, i) => i);
   }
 
   ngOnInit(): void {
-    
+
     this.updateFilteredAndSortedProducts(null, null, null);
   }
 
@@ -101,7 +101,7 @@ export class ProductsPageComponent {
 
   updateFilteredAndSortedProducts(selectedTag: string | null, selectedColor: string | null, selectedFabric: string | null): void {
     this.filteredProducts = this.filterAndSortProducts(this.allProducts, selectedTag, selectedColor, selectedFabric);
-    this.currentPage = 0; 
+    this.currentPage = 0;
     this.updatePaginatedProducts();
   }
 
@@ -123,11 +123,11 @@ export class ProductsPageComponent {
       const [min, max] = priceMatch.map(price => parseFloat(price.replace(/[,£]/g, '')));
       return [min, max];
     }
-    return [0, Infinity]; 
+    return [0, Infinity];
   }
 
   selectTag(tag: string): void {
-    this.selectedTag = this.selectedTag === tag ? null : tag; 
+    this.selectedTag = this.selectedTag === tag ? null : tag;
     this.updateFilteredAndSortedProducts(this.selectedTag, this.selectedColor, this.selectedFabric);
   }
 
@@ -140,7 +140,7 @@ export class ProductsPageComponent {
     const allProducts: any[] = [];
     const [minPrice, maxPrice] = this.extractPriceRange(this.priceRange);
 
-    
+
     function collectProducts(obj: any) {
       if (Array.isArray(obj)) {
         allProducts.push(...obj);
@@ -152,7 +152,7 @@ export class ProductsPageComponent {
     collectProducts(products);
 
     if (selectedTag || selectedColor || selectedFabric || this.priceRange) {
-      
+
       return allProducts.filter(item => {
         const tags = item.tags || [];
         const matchesTag = selectedTag ? tags.includes(selectedTag) : true;
@@ -163,23 +163,23 @@ export class ProductsPageComponent {
         return matchesTag && matchesColor && matchesFabric && matchesPrice;
       });
     } else {
-    
+
       return allProducts.sort(() => Math.random() - 0.5);
     }
   }
 
-  
+
   onPriceChange(event: any) {
-    const newValue = event.target.value; 
+    const newValue = event.target.value;
     const [currentMin, currentMax] = this.extractPriceRange(this.priceRange);
 
     if (newValue < currentMin) {
       this.minValue = newValue;
-      this.maxValue = currentMax; 
+      this.maxValue = currentMax;
     } else if (newValue > currentMax) {
-     
+
       this.maxValue = newValue;
-      this.minValue = currentMin; 
+      this.minValue = currentMin;
     } else {
       const diffToMin = Math.abs(newValue - currentMin);
       const diffToMax = Math.abs(newValue - currentMax);
@@ -191,9 +191,9 @@ export class ProductsPageComponent {
       }
     }
 
-    
+
     this.priceRange = `£${this.minValue} - £${this.maxValue}`;
-    
+
   }
 
 
@@ -202,19 +202,19 @@ export class ProductsPageComponent {
     this.updateFilteredAndSortedProducts(this.selectedTag, this.selectedColor, this.selectedFabric);
   }
 
-  
+
   toggleColor(colorName: string) {
     this.selectedColor = this.selectedColor === colorName ? null : colorName;
-    console.log('Selected color:', this.selectedColor); 
+    console.log('Selected color:', this.selectedColor);
     this.filteredProducts = this.filterAndSortProducts(this.allProducts, this.selectedTag, this.selectedColor, this.selectedFabric);
     this.updateFilteredAndSortedProducts(this.selectedTag, this.selectedColor, this.selectedFabric);
   }
 
 
- 
+
   toggleFabric(fabricName: string) {
     this.selectedFabric = this.selectedFabric === fabricName ? null : fabricName;
-    console.log('Selected color:', this.selectedColor); 
+    console.log('Selected color:', this.selectedColor);
     this.filteredProducts = this.filterAndSortProducts(this.allProducts, this.selectedTag, this.selectedColor, this.selectedFabric)
     this.updateFilteredAndSortedProducts(this.selectedTag, this.selectedColor, this.selectedFabric);
 
@@ -232,7 +232,7 @@ export class ProductsPageComponent {
       case 'Swatches fabric': return 'bg-gray-900';
       case 'Tow sad wollen fabric': return 'bg-gray-300';
       case 'Wollen fabric': return 'bg-gray-100';
-      default: return 'bg-gray-300'; 
+      default: return 'bg-gray-300';
     }
   }
 

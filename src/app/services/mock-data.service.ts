@@ -28,6 +28,9 @@ interface FurnitureData {
 
 export class MockDataService {
 
+
+
+    
     private furnitureData = {
 
         seatings: {

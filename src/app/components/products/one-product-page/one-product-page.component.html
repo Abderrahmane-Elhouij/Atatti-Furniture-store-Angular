@@ -16,7 +16,7 @@
         @if (currentView === 'image') {
         <div class="w-full h-full">
           <img
-            src="{{ testChair.image }}"
+            src="{{ oneProduct.image }}"
             alt="675 Chair"
             class="w-full h-full object-cover"
           />
@@ -26,7 +26,7 @@
         <!-- 3D Model View -->
         @if (currentView === '3d') {
         <model-viewer
-          src="{{ testChair.threeDModel }}"
+          src="{{ oneProduct.model }}"
           alt="A 3D model"
           camera-controls
           camera-orbit="0deg 75deg 4.5m"
@@ -42,13 +42,13 @@
 
     <!-- Details Section -->
     <div class="lg:w-1/2">
-      <h1 class="text-3xl font-bold mb-2">{{ testChair.name }}</h1>
+      <h1 class="text-3xl font-bold mb-2">{{ oneProduct.name }}</h1>
       <div class="flex items-center gap-2">
         <span class="text-yellow-400 text-xl">★★★★★</span>
         <span class="text-gray-600">(11 Reviews)</span>
       </div>
       <p class="mt-4 text-gray-600">
-        {{ testChair.description }}
+        {{ oneProduct.description }}
         <a href="#" class="text-blue-500 hover:underline">Read more</a>
       </p>
 

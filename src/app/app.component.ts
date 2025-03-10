@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { FooterComponent } from './shared/footer/footer.component';
-import { NavbarComponent } from "./shared/navbar/navbar.component";
+import { FooterComponent } from './components/shared/footer/footer.component';
+import { NavbarComponent } from "./components/shared/navbar/navbar.component";
 import { RouterOutlet } from '@angular/router';
+import { HttpBackend, HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-root',
   standalone: true,
