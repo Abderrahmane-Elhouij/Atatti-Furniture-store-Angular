@@ -1,9 +1,9 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, effect, inject, input } from '@angular/core';
-import { MockDataService } from '../../services/mock-data.service';
+import { MockDataService } from '../../../services/mock-data.service';
 import { faCubes, faImage } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ActivatedRoute } from '@angular/router';
-import { CartService } from '../../services/cart.service';
+import { CartService } from '../../../services/cart.service';
 
 @Component({
   selector: 'app-one-product-page',

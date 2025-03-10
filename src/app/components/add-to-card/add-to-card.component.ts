@@ -1,5 +1,5 @@
 import { Component, effect, inject, output, signal, Signal } from '@angular/core';
-import { CartService } from '../services/cart.service';
+import { CartService } from '../../services/cart.service';
 import { DecimalPipe } from '@angular/common';
 import {MatButtonModule} from '@angular/material/button';import {
   MAT_DIALOG_DATA,
@@ -84,8 +84,8 @@ export class AddToCardComponent {
   openCheckoutDialog() {
     this.dialog.open(CheckoutComponent, {
       width: '800px',
-      height: 'auto', 
-     
+      height: 'auto',
+
     });
   }
 

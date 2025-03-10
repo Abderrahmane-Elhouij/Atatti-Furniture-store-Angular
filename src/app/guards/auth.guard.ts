@@ -11,7 +11,7 @@ export const AuthGuard = (): Observable<boolean> => {
   const authService = inject(AuthService);
   const router = inject(Router);
 
-  return authService.isLoggedIn().pipe(
+  return authService.checkAuthStatus().pipe(
     map(isLoggedIn => {
       if (!isLoggedIn) {
         router.navigate(['/login']);

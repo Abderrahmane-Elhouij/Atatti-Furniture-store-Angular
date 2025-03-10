@@ -43,12 +43,21 @@
           </span>
         </span>
       </button>
-      <button routerLink="login" class="text-gray-900 hover:text-gray-400">
-        <fa-icon [icon]="faUser">¡</fa-icon> Login
-      </button>
-      <button routerLink="signup" class="text-gray-900 hover:text-gray-400">
-        <fa-icon [icon]="faSignIn">¡</fa-icon> Signup
-      </button>
+      @if (!(isAuthenticated$ | async)) {
+        <button routerLink="login" class="text-gray-900 hover:text-gray-400">
+          <fa-icon [icon]="faUser">¡</fa-icon>
+          Login
+        </button>
+        <button routerLink="signup" class="text-gray-900 hover:text-gray-400">
+          <fa-icon [icon]="faSignIn">¡</fa-icon>
+          Signup
+        </button>
+      } @else {
+        <button (click)="logout()" class="text-gray-900 hover:text-gray-400">
+          <fa-icon [icon]="faSignOut">¡</fa-icon>
+          Logout
+        </button>
+      }
     </div>
   </div>
 </header>
