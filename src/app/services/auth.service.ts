@@ -1,10 +1,11 @@
-import {inject, Injectable} from '@angular/core';
+import {inject, Injectable, signal} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {map, shareReplay, startWith, switchMap, tap} from 'rxjs/operators';
-import {of, Observable, interval, BehaviorSubject, timer, throwError} from 'rxjs';
+import {of, Observable, interval, BehaviorSubject, timer, throwError, Subscription} from 'rxjs';
 import {catchError} from 'rxjs/operators';
 import {environment} from '../../environments/environment';
 import {ApiService} from './api.service';
+import {Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -13,19 +14,31 @@ export class AuthService {
 
   private http = inject(HttpClient);
   private apiService = inject(ApiService);
+  private router = inject(Router);
   private apiBaseUrl = environment.apiBaseUrl
   private isAuthenticatedSubject = new BehaviorSubject<boolean>(false);
   isAuthenticated$ = this.isAuthenticatedSubject.asObservable();
+  username = signal<string>("");
 
   constructor() {
     // Initial check on app startup
     this.checkAuthStatus().subscribe();
   }
 
-  login(credentials: any): Observable<boolean> {
+  login(credentials: any): Subscription {
     return this.apiService.login(credentials).pipe(
       tap(() => this.isAuthenticatedSubject.next(true))
-    );
+    ).subscribe({
+      next: (res) => {
+        this.username.set(res.name);
+        // Navigate to your dashboard or home page on success
+        this.router.navigate(['/']);
+      },
+      error: (err) => {
+        console.error(err);
+        alert('Invalid credentials');
+      },
+    });
   }
 
   signup(user: { name: string; login: string; password: string; }): Observable<boolean> {

@@ -23,9 +23,7 @@ export class ApiService {
   }
 
   getProducts(){
-    return this.http.get(`${this.apiBaseUrl}/products/image`, { withCredentials: true }).subscribe(res=>{
-      console.log(res);
-    });
+    return this.http.get(`${this.apiBaseUrl}/products/image`, { withCredentials: true });
   }
 
   signup(user: { name: string; login: string; password: string; }) {

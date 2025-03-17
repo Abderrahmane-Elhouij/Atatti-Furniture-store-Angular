@@ -21,5 +21,4 @@ export class ProductComponent {
   faHeart = faHeart;
   faEye = faEye;
 
-
 }

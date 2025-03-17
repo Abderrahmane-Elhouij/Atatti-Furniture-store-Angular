@@ -1,5 +1,5 @@
-import {Component, inject} from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import {Component, inject, signal} from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { FormsModule } from '@angular/forms';
 
@@ -11,7 +11,6 @@ import { FormsModule } from '@angular/forms';
 })
 export class LoginComponent {
   private authService = inject(AuthService);
-  private router = inject(Router);
 
   credentials = {
     name: '',
@@ -19,16 +18,7 @@ export class LoginComponent {
   };
 
   login() {
-    this.authService.login(this.credentials).subscribe({
-      next: (res) => {
-        // Navigate to your dashboard or home page on success
-        this.router.navigate(['/']);
-      },
-      error: (err) => {
-        console.error(err);
-        alert('Invalid credentials');
-      },
-    });
+    this.authService.login(this.credentials);
   }
 
   loginWithGoogle() {

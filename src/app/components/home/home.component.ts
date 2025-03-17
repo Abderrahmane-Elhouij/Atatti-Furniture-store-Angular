@@ -1,14 +1,16 @@
-import { AfterViewInit, Component, inject } from '@angular/core';
+import {AfterViewInit, Component, inject, OnInit, signal, WritableSignal} from '@angular/core';
 import Splide from '@splidejs/splide';
-import { ProductComponent } from '../products/product/product.component';
-import { MockDataService } from '../../services/mock-data.service';
+import {ProductComponent} from '../products/product/product.component';
+import {MockDataService} from '../../services/mock-data.service';
 import '@google/model-viewer';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { AnimateFromViewportDirective } from '../../animate-from-viewport.directive';import { AddToCardComponent } from '../add-to-card/add-to-card.component';
-import { Hero1Component } from "./hero1/hero1.component";
-import { Hero2Component } from "./hero2/hero2.component";
-import { Hero3Component } from "./hero3/hero3.component";
-import { CommonModule } from '@angular/common';
+import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import {AnimateFromViewportDirective} from '../../animate-from-viewport.directive';
+import {AddToCardComponent} from '../add-to-card/add-to-card.component';
+import {Hero1Component} from "./hero1/hero1.component";
+import {Hero2Component} from "./hero2/hero2.component";
+import {Hero3Component} from "./hero3/hero3.component";
+import {CommonModule} from '@angular/common';
+import {AuthService} from '../../services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -19,34 +21,37 @@ import { CommonModule } from '@angular/common';
   schemas: [CUSTOM_ELEMENTS_SCHEMA], // Add this line
 })
 
-export class HomeComponent {
+export class HomeComponent implements OnInit{
 
+  private authService = inject(AuthService);
+  // List of components
+  components = ['hero1', 'hero2', 'hero3'];
+  currentComponent = 'hero1'; // Start with the first component
+  intervalId: any;
+  username = signal<string>("");
 
- // List of components
- components = ['hero1', 'hero2', 'hero3'];
- currentComponent = 'hero1'; // Start with the first component
- intervalId: any;
+  ngOnInit() {
+    // Start the interval
+    this.intervalId = setInterval(() => {
+      this.nextComponent();
+    }, 10000); // Change every 10 seconds
 
- ngOnInit() {
-   // Start the interval
-   this.intervalId = setInterval(() => {
-     this.nextComponent();
-   }, 7000); // Change every 5 seconds
- }
+    this.username.set(this.authService.username());
+  }
 
- ngOnDestroy() {
-   // Clear the interval when the component is destroyed
-   if (this.intervalId) {
-     clearInterval(this.intervalId);
-   }
- }
+  ngOnDestroy() {
+    // Clear the interval when the component is destroyed
+    if (this.intervalId) {
+      clearInterval(this.intervalId);
+    }
+  }
 
- nextComponent() {
-   // Find the next component in the array
-   const currentIndex = this.components.indexOf(this.currentComponent);
-   const nextIndex = (currentIndex + 1) % this.components.length;
-   this.currentComponent = this.components[nextIndex];
- }
+  nextComponent() {
+    // Find the next component in the array
+    const currentIndex = this.components.indexOf(this.currentComponent);
+    const nextIndex = (currentIndex + 1) % this.components.length;
+    this.currentComponent = this.components[nextIndex];
+  }
 
   private productsService = inject(MockDataService);
   products = this.productsService.getData();
@@ -71,9 +76,5 @@ export class HomeComponent {
 
     return selectedProducts;
   }
-
-
-
-
 
 }

@@ -1,11 +1,12 @@
-import { CommonModule } from '@angular/common';
-import { Component, inject, input } from '@angular/core';
-import { MatSliderModule } from '@angular/material/slider';
-import { FabricOption } from '../../../app.model';
-import { MatListModule } from '@angular/material/list';
-import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MockDataService } from '../../../services/mock-data.service';
-import { ProductComponent } from '../product/product.component';
+import {CommonModule} from '@angular/common';
+import {Component, inject, input, OnInit} from '@angular/core';
+import {MatSliderModule} from '@angular/material/slider';
+import {FabricOption} from '../../../app.model';
+import {MatListModule} from '@angular/material/list';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MockDataService} from '../../../services/mock-data.service';
+import {ProductComponent} from '../product/product.component';
+import {ApiService} from '../../../services/api.service';
 
 @Component({
   selector: 'app-products-page',
@@ -13,56 +14,56 @@ import { ProductComponent } from '../product/product.component';
   standalone: true,
   templateUrl: './products-page.component.html',
 })
-export class ProductsPageComponent {
+export class ProductsPageComponent implements OnInit {
 
   private productsService = inject(MockDataService);
+  private apiService = inject(ApiService);
+  products: any = [];
+
+  ngOnInit(): void {
+    this.apiService.getProducts().subscribe(res => {
+      this.products = res;
+      console.log(this.products);
+    });
+
+    this.updateFilteredAndSortedProducts(null, null, null);
+  }
 
   allProducts = this.productsService.getData();
   seatings = this.allProducts.seatings;
   tables = this.allProducts.tables;
   beds = this.allProducts.bedRoom;
   storage = this.allProducts.storage;
-
   chairs = this.seatings.chairs;
-
   drawers = this.storage.drawers;
-
-  // ngOnInit(): void {
-  //   //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-  //   //Add 'implements OnInit' to the class.
-  //   console.log(this.chairs);
-
-  // }
-
 
 
   colors = [
-    { name: 'black', hex: '#000000', count: 37 },
-    { name: 'white', hex: '#FFFFFF', count: 28 },
-    { name: 'blue', hex: '#0000FF', count: 7 },
-    { name: 'yellow', hex: '#FFFF00', count: 76 },
-    { name: 'brown', hex: '#A52A2A', count: 95 },
-    { name: 'green', hex: '#008000', count: 11 },
-    { name: 'orange', hex: '#FFA500', count: 4 },
-    { name: 'silver', hex: '#C0C0C0', count: 24 },
-    { name: 'purple', hex: '#800080', count: 2 },
+    {name: 'black', hex: '#000000', count: 37},
+    {name: 'white', hex: '#FFFFFF', count: 28},
+    {name: 'blue', hex: '#0000FF', count: 7},
+    {name: 'yellow', hex: '#FFFF00', count: 76},
+    {name: 'brown', hex: '#A52A2A', count: 95},
+    {name: 'green', hex: '#008000', count: 11},
+    {name: 'orange', hex: '#FFA500', count: 4},
+    {name: 'silver', hex: '#C0C0C0', count: 24},
+    {name: 'purple', hex: '#800080', count: 2},
 
   ];
 
 
   fabricOptions: FabricOption[] = [
-    { name: 'wood', count: 5 },
-    { name: 'metal', count: 2 },
-    { name: 'glass', count: 93 },
-    { name: 'oak', count: 23 },
-    { name: 'marble', count: 33 },
-    { name: 'cotton', count: 84 },
+    {name: 'wood', count: 5},
+    {name: 'metal', count: 2},
+    {name: 'glass', count: 93},
+    {name: 'oak', count: 23},
+    {name: 'marble', count: 33},
+    {name: 'cotton', count: 84},
 
 
   ];
 
   tags = ["seating", "storage", "chair", "drawer", "bed", "bedside table", "coffee table", "dining table", "desk", "office", "modern", "classic", "luxury"];
-
 
 
   selectedTag: string | null = null;
@@ -79,12 +80,7 @@ export class ProductsPageComponent {
 
 
   get totalPages(): number[] {
-    return Array.from({ length: Math.ceil(this.filteredProducts.length / this.itemsPerPage) }, (_, i) => i);
-  }
-
-  ngOnInit(): void {
-
-    this.updateFilteredAndSortedProducts(null, null, null);
+    return Array.from({length: Math.ceil(this.filteredProducts.length / this.itemsPerPage)}, (_, i) => i);
   }
 
   updatePaginatedProducts(): void {
@@ -197,7 +193,7 @@ export class ProductsPageComponent {
   }
 
 
-  filterPrice(){
+  filterPrice() {
     this.filteredProducts = this.filterAndSortProducts(this.allProducts, this.selectedTag, this.selectedColor, this.selectedFabric);
     this.updateFilteredAndSortedProducts(this.selectedTag, this.selectedColor, this.selectedFabric);
   }
@@ -211,7 +207,6 @@ export class ProductsPageComponent {
   }
 
 
-
   toggleFabric(fabricName: string) {
     this.selectedFabric = this.selectedFabric === fabricName ? null : fabricName;
     console.log('Selected color:', this.selectedColor);
@@ -223,16 +218,26 @@ export class ProductsPageComponent {
   getFabricColor(fabricName: string): string {
 
     switch (fabricName) {
-      case 'Alpaca wollen fabric': return 'bg-gray-200';
-      case 'Boiled wollen fabric': return 'bg-gray-400';
-      case 'Chenille Fabric': return 'bg-gray-500';
-      case 'Crepe Fabric': return 'bg-gray-600';
-      case 'Flannel fabric': return 'bg-gray-700';
-      case 'Jute fabric': return 'bg-gray-800';
-      case 'Swatches fabric': return 'bg-gray-900';
-      case 'Tow sad wollen fabric': return 'bg-gray-300';
-      case 'Wollen fabric': return 'bg-gray-100';
-      default: return 'bg-gray-300';
+      case 'Alpaca wollen fabric':
+        return 'bg-gray-200';
+      case 'Boiled wollen fabric':
+        return 'bg-gray-400';
+      case 'Chenille Fabric':
+        return 'bg-gray-500';
+      case 'Crepe Fabric':
+        return 'bg-gray-600';
+      case 'Flannel fabric':
+        return 'bg-gray-700';
+      case 'Jute fabric':
+        return 'bg-gray-800';
+      case 'Swatches fabric':
+        return 'bg-gray-900';
+      case 'Tow sad wollen fabric':
+        return 'bg-gray-300';
+      case 'Wollen fabric':
+        return 'bg-gray-100';
+      default:
+        return 'bg-gray-300';
     }
   }
 
