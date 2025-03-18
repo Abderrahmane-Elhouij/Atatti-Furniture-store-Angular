@@ -11,17 +11,17 @@ module.exports = {
         'fade-in-2': 'fadeIn 0.5s ease-in 0.3s forwards',
         'fade-in-3': 'fadeIn 0.5s ease-in 0.5s forwards',
         'fade-in-4': 'fadeIn 0.5s ease-in 0.7s forwards',
-        
-        'from-top': 'fromTop 1s ease-out forwards', 
+
+        'from-top': 'fromTop 1s ease-out forwards',
         'from-bottom-1': 'fromBottom 1s ease-in forwards',
-        'from-bottom-2': 'fromBottom 1s ease-in 0.3s forwards',  
-        'from-bottom-3': 'fromBottom 1s ease-in 0.6s forwards',  
-        'from-bottom-4': 'fromBottom 1s ease-in 0.9s forwards',  
-        'from-bottom-5': 'fromBottom 1s ease-in 1.2s forwards',  
+        'from-bottom-2': 'fromBottom 1s ease-in 0.3s forwards',
+        'from-bottom-3': 'fromBottom 1s ease-in 0.6s forwards',
+        'from-bottom-4': 'fromBottom 1s ease-in 0.9s forwards',
+        'from-bottom-5': 'fromBottom 1s ease-in 1.2s forwards',
 
         'slide-down': 'slideDown 0.5s ease-out',
 
-      },   
+      },
       keyframes: {
         fadeIn: {
           '0%': { opacity: '0' },
@@ -41,8 +41,8 @@ module.exports = {
           '100%': { transform: 'translateY(0)', opacity: '1' },
         },
       },
-      
+
     },
   },
-  plugins: [],
+  plugins: [[require('@tailwindcss/line-clamp')], ],
 };

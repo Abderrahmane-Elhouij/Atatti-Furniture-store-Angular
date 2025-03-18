@@ -1,9 +1,11 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, effect, inject, input } from '@angular/core';
-import { MockDataService } from '../../../services/mock-data.service';
-import { faCubes, faImage } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { ActivatedRoute } from '@angular/router';
-import { CartService } from '../../../services/cart.service';
+import {Component, CUSTOM_ELEMENTS_SCHEMA, inject, OnInit} from '@angular/core';
+import {faCubes, faHeart, faImage, faHeadphones, faTruck, faBolt, faShieldAlt, faCircle} from '@fortawesome/free-solid-svg-icons';
+import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+import {ActivatedRoute} from '@angular/router';
+import {CartService} from '../../../services/cart.service';
+import {HttpClient} from '@angular/common/http';
+
+
 
 @Component({
   selector: 'app-one-product-page',
@@ -12,9 +14,10 @@ import { CartService } from '../../../services/cart.service';
   templateUrl: './one-product-page.component.html',
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class OneProductPageComponent {
-  private productsService = inject(MockDataService)
+export class OneProductPageComponent implements OnInit{
   private cartService = inject(CartService)
+  //private productsService = inject(ProductsService);
+  private http = inject(HttpClient);
 
   totalItems = 0;
   source = 'oneproduct'
@@ -22,42 +25,57 @@ export class OneProductPageComponent {
   currentView: 'image' | '3d' = 'image';
   quantity: number = 1;
 
-  allProducts = this.productsService.getData();
-  // testChair = this.allProducts.seatings.chairs[0];
 
-  productId!: string;
-  testChair: any; // Replace `any` with the actual product type if available
+  productRef!: string;
+  oneProduct!: any;
   faImage = faImage;
   fa3DModel = faCubes;
+  faHeart = faHeart;
+  faHeadphones = faHeadphones;
+  faTruck = faTruck;
+  faBolt = faBolt;
+  faShield = faShieldAlt;
+  faCircle = faCircle;
 
-  constructor(private route: ActivatedRoute) {
-    // effect(() => {
-    //   this.sendData(); // Automatically send updated totalItems
-    // });
-  }
+  constructor(private route: ActivatedRoute) {}
+
 
   sendData() {
-    this.cartService.sendData(this.quantity, this.source); // Send data to the service
+    this.cartService.sendData(this.quantity, this.source);
   }
+
+
 
   ngOnInit(): void {
-    // Get the product ID from the route
-    this.productId = this.route.snapshot.paramMap.get('id')!;
-    console.log('Product ID:', this.productId);
 
-    // Fetch the product using the ID
-    this.testChair = this.productsService.getProductById(Number(this.productId));
-    console.log('Fetched Product:', this.testChair);
+    this.productRef = "ares_dining_table";
+
+    //this.productRef = this.route.snapshot.paramMap.get('ref')!;
+    console.log('Product Ref:', this.productRef);
+
+    this.http.get(`http://localhost:8080/api/products/ref/${this.productRef}`, {withCredentials: true})
+      .subscribe((data: any) => {
+        this.oneProduct = data;
+        console.log('Fetched Product:', this.oneProduct);  // log inside subscribe callback
+      });
+
   }
+
+
+
+
 
 
   toggleView() {
     this.currentView = this.currentView === 'image' ? '3d' : 'image';
     console.log(`Switched to ${this.currentView} view.`);
-    console.log(this.testChair);
+    console.log(this.oneProduct);
 
   }
 
+
+
+  //Cart functions
   increaseQuantity() {
     this.quantity++;
   }
@@ -69,8 +87,8 @@ export class OneProductPageComponent {
   }
 
   addToCart() {
-    this.testChair.quantity = this.quantity;
-    this.cartService.addToCart(this.testChair);
+    this.oneProduct.quantity = this.quantity;
+    this.cartService.addToCart(this.oneProduct);
     alert('Product added to cart!');
   }
 }

@@ -1,5 +1,5 @@
 <div class="container mx-auto px-4 py-8">
-  <div class="flex flex-col lg:flex-row gap-8">
+  <div class="flex flex-col justify-center gap-14 lg:flex-row">
     <!-- Image/3D Model Section -->
     <div class="relative lg:w-1/2 bg-gray-100 rounded-md overflow-hidden">
       <!-- Toggle Button -->
@@ -16,7 +16,7 @@
         @if (currentView === 'image') {
         <div class="w-full h-full">
           <img
-            src="{{ testChair.image }}"
+            src="{{ oneProduct.image }}"
             alt="675 Chair"
             class="w-full h-full object-cover"
           />
@@ -26,7 +26,7 @@
         <!-- 3D Model View -->
         @if (currentView === '3d') {
         <model-viewer
-          src="{{ testChair.threeDModel }}"
+          src="{{ oneProduct.model }}"
           alt="A 3D model"
           camera-controls
           camera-orbit="0deg 75deg 4.5m"
@@ -42,14 +42,14 @@
 
     <!-- Details Section -->
     <div class="lg:w-1/2">
-      <h1 class="text-3xl font-bold mb-2">{{ testChair.name }}</h1>
+      <h1 class="text-3xl font-bold mb-2">{{ oneProduct.name }}</h1>
       <div class="flex items-center gap-2">
         <span class="text-yellow-400 text-xl">★★★★★</span>
         <span class="text-gray-600">(11 Reviews)</span>
       </div>
       <p class="mt-4 text-gray-600">
-        {{ testChair.description }}
-        <a href="#" class="text-blue-500 hover:underline">Read more</a>
+        {{ oneProduct.description }}
+        <a href="#desc" class="text-blue-500 hover:underline">Read more</a>
       </p>
 
       <!-- Options -->
@@ -86,7 +86,11 @@
         </button>
 
         <!-- Add to Cart Section -->
-        <div class="mt-4 flex items-center gap-4">
+
+      </div>
+
+      <div class="flex gap-2 flex-col align-middle">
+        <div class="flex items-center gap-4 mt-16">
           <button
             class="text-black text-2xl px-4 py-2"
             (click)="decreaseQuantity()"
@@ -102,14 +106,96 @@
           >
             +
           </button>
-            <button
-            class="text-black border border-black px-3.5 py-1.5"
+          <button
+            class="text-white bg-black hover:bg-white hover:text-black transition-all duration-[300ms]  border border-black px-3.5 py-1.5"
             (click)="addToCart(); sendData()"
-            >
+          >
             Add to Cart
           </button>
         </div>
+        <div class="flex flex-row gap-2 ml-4 items-center cursor-pointer hover:text-yellow-400 text-gray-500">
+          <fa-icon [icon]="faHeart" class="text-sm"/>
+          <h3 class="text-xs font-bold uppercase mt-0.5">add to wishlist</h3>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+  <div class="mt-8 flex flex-row float-end">
+    @if(oneProduct.quantity < 10){
+      <fa-icon [icon]="faCircle" class="text-[10px] mt-1.5 mr-2 text-red-600"/>
+      <h3 class="text-md font-bold text-red-600">Low Stock - &nbsp;</h3>
+      <h3 class="text-md font-bold text-gray-500">Only <label>{{ oneProduct.quantity }}</label> in stock&nbsp;&nbsp; / &nbsp;&nbsp;</h3>
+      <div class="flex gap-2 flex-row align-middle">
+        <fa-icon [icon]="faBolt" class="text-sm mt-0.5 text-green-500"/>
+        <h3 class="text-md text-gray-500 font-bold"> Fast Delivery</h3>
+      </div>
+    }@else {
+      <fa-icon [icon]="faCircle" class="text-[10px] mt-1.5 mr-2 text-green-500"/>
+      <h3 class="text-md font-bold text-gray-500"><label class="text-green-500">In Stock</label> - Ready for Dispatch&nbsp;&nbsp; / &nbsp;&nbsp;</h3>
+      <div class="flex gap-2 flex-row align-middle">
+        <fa-icon [icon]="faBolt" class="text-sm mt-0.5 text-green-500"/>
+        <h3 class="text-md text-gray-500 font-bold"> Fast Delivery</h3>
+      </div>
+    }
+
+  </div>
+
+  <div class="mt-40 flex justify-around items-center align-top text-gray-500 font-bold">
+    <div class="flex gap-2 flex-col justify-center items-center">
+      <fa-icon class="text-xl" [icon]="faShield" />
+      <h3 class="text-gray-700">2-years warranty</h3>
+    </div>
+    <div class="h-14 w-0.5 bg-gray-400"></div>
+    <div class="flex gap-2 flex-col justify-center items-center">
+      <fa-icon class="text-xl" [icon]="faHeadphones" />
+      <h3 class="text-gray-700">Want to speak to the team?</h3>
+      <a href="#" class="text-gray-700 underline">Get in touch</a>
+    </div>
+    <div class="h-14 w-0.5 bg-gray-400"></div>
+    <div class="flex gap-2 flex-col justify-center items-center">
+      <fa-icon class="text-xl" [icon]="faTruck" />
+      <h3 class="text-gray-700">Free Morocco delivery</h3>
+    </div>
+  </div>
+  <hr class="w-full text-center mt-14 border-b-1.8">
+
+  <div class="mt-6" id="desc">
+    <h3 class="text-2xl " >Description</h3>
+      <h3 class="text-gray-500 mt-4 opacity-80 line-clamp-2">{{ oneProduct.description }}</h3>
+
+  </div>
+
+  <hr class="w-full text-center mt-14 border-b-1.8">
+
+  <div class="mt-10">
+    <h3 class="text-2xl text-center" >Customer Reviews</h3>
+
+    <!-- Reviews DIV -->
+    <div class="flex justify-center gap-16 mt-8 items-center">
+      <div>
+
+        <h3>2-years warranty</h3>
+      </div>
+      <div class="h-14 w-0.5 bg-gray-400"></div>
+      <div class="flex gap-2 flex-col justify-center items-center">
+        <fa-icon [icon]="faHeadphones" />
+        <h3>Want to speak to the team?</h3>
+        <a href="#">Get in touch</a>
+      </div>
+      <div class="h-14 w-0.5 bg-gray-400"></div>
+      <div>
+        <fa-icon [icon]="faTruck" />
+        <h3>Free Morocco delivery</h3>
       </div>
     </div>
+  </div>
+
+  <hr class="w-full text-center mt-14 border-b-1.8">
+
+  <div class="mt-10">
+    <h3 class="text-2xl text-center" >You may also like</h3>
+
   </div>
 </div>
