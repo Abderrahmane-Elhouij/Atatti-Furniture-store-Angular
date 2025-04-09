@@ -1,16 +1,21 @@
 <div>
-  <div class="slider-container">
-    <!-- Render the current component dynamically -->
-    <ng-container [@fadeAnimation] class="fade" *ngIf="currentComponent === 'hero1'">
-      <app-hero1></app-hero1>
-    </ng-container>
-    <ng-container [@fadeAnimation] class="fade" *ngIf="currentComponent === 'hero2'">
-      <app-hero2></app-hero2>
-    </ng-container>
-    <ng-container [@fadeAnimation] class="fade" *ngIf="currentComponent === 'hero3'">
-      <app-hero3></app-hero3>
-    </ng-container>
+  <div #swiperContainer class="swiper h-[600px]">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <app-hero1></app-hero1>
+      </div>
+      <div class="swiper-slide">
+        <app-hero2></app-hero2>
+      </div>
+      <div class="swiper-slide">
+        <app-hero3></app-hero3>
+      </div>
+    </div>
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
   </div>
+
   <div class="grid grid-cols-4 gap-4">
     <div class="p-4 content-center">
       <img

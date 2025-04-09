@@ -1,7 +1,91 @@
 .slider-container {
     width: 100%;
-    height: 100%;
+    height: 600px;
     position: relative;
     overflow: hidden;
   }
+  
+.slider-container button {
+  backdrop-filter: blur(5px);
+}
+
+.slider-container button:hover {
+  transform: scale(1.1);
+}
+
+/* Ensure smooth transitions for the slider content */
+.slider-container > div {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+/* Add a subtle shadow to the navigation buttons */
+.slider-container button {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Add hover effect to navigation dots */
+.slider-container .navigation-dots button:hover {
+  transform: scale(1.2);
+}
+
+/* Swiper Navigation Buttons */
+.swiper-button-next,
+.swiper-button-prev {
+  color: white !important;
+  background: rgba(0, 0, 0, 0.3);
+  width: 50px !important;
+  height: 50px !important;
+  border-radius: 50%;
+  backdrop-filter: blur(5px);
+  transition: all 0.3s ease;
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+  font-size: 24px !important;
+  font-weight: bold;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  background: rgba(0, 0, 0, 0.5);
+  transform: scale(1.1);
+}
+
+.swiper-button-disabled {
+  opacity: 0.35 !important;
+  cursor: not-allowed !important;
+}
+
+/* Swiper Pagination */
+.swiper-pagination {
+  bottom: 20px !important;
+}
+
+.swiper-pagination-bullet {
+  width: 10px !important;
+  height: 10px !important;
+  background: white !important;
+  opacity: 0.5 !important;
+  transition: all 0.3s ease !important;
+}
+
+.swiper-pagination-bullet-active {
+  opacity: 1 !important;
+  transform: scale(1.2) !important;
+  background: white !important;
+}
+
+/* Swiper Container */
+swiper-container {
+  width: 100%;
+  height: 600px;
+}
+
+swiper-slide {
+  width: 100%;
+  height: 100%;
+}
   

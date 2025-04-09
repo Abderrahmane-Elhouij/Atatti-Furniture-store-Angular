@@ -16,7 +16,7 @@
         @if (currentView === 'image') {
         <div class="w-full h-full">
           <img
-            src="{{ oneProduct.image }}"
+            [src]="'data:image/jpeg;base64,' + oneProduct.image"
             alt="675 Chair"
             class="w-full h-full object-cover"
           />
@@ -26,7 +26,8 @@
         <!-- 3D Model View -->
         @if (currentView === '3d') {
         <model-viewer
-          src="{{ oneProduct.model }}"
+          *ngIf="modelUrl"
+          src="{{ modelUrl }}"
           alt="A 3D model"
           camera-controls
           camera-orbit="0deg 75deg 4.5m"
@@ -159,35 +160,64 @@
       <h3 class="text-gray-700">Free Morocco delivery</h3>
     </div>
   </div>
-  <hr class="w-full text-center mt-14 border-b-1.8">
+  <hr class="w-full text-center mt-32 border-b-1.8">
 
-  <div class="mt-6" id="desc">
+  <div class="mt-8" id="desc">
     <h3 class="text-2xl " >Description</h3>
       <h3 class="text-gray-500 mt-4 opacity-80 line-clamp-2">{{ oneProduct.description }}</h3>
 
   </div>
 
-  <hr class="w-full text-center mt-14 border-b-1.8">
+  <hr class="w-full text-center mt-32 border-b-1.8">
 
-  <div class="mt-10">
+  <div class="mt-8">
     <h3 class="text-2xl text-center" >Customer Reviews</h3>
 
     <!-- Reviews DIV -->
     <div class="flex justify-center gap-16 mt-8 items-center">
-      <div>
+      <div class="flex flex-row gap-3">
+        <div>
+            <h3 class="text-4xl ">3.9</h3>
+        </div>
+        <div>
+          <p-rating class="text-4xl" [(ngModel)]="value" [stars]="5" readonly />
+          Based on 11 reviews
+        </div>
+      </div>
+      <div class="h-14 w-0.5 bg-gray-400"></div>
+      <div class="flex flex-col items-center">
+        <div class="flex flex-row gap-2">
+          <label>5</label>
+          <p-rating class="text-4xl" [stars]="1" readonly />
+          <mat-progress-bar mode="determinate" value="10"></mat-progress-bar>
+          <label class="ml-8">15</label>
 
-        <h3>2-years warranty</h3>
-      </div>
-      <div class="h-14 w-0.5 bg-gray-400"></div>
-      <div class="flex gap-2 flex-col justify-center items-center">
-        <fa-icon [icon]="faHeadphones" />
-        <h3>Want to speak to the team?</h3>
-        <a href="#">Get in touch</a>
+        </div>
+        <div class="flex flex-row gap-2">
+          <label>4</label>
+          <p-rating class="text-4xl" [stars]="1" readonly />
+          <mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
+        </div>
+        <div class="flex flex-row gap-2">
+          <label>3</label>
+          <p-rating class="text-4xl" [stars]="1" readonly />
+          <mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
+        </div>
+        <div class="flex flex-row gap-2">
+          <label>2</label>
+          <p-rating class="text-4xl" [stars]="1" readonly />
+          <mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
+        </div>
+        <div class="flex flex-row gap-2">
+          <label>1</label>
+          <p-rating class="text-4xl" [stars]="1" readonly />
+          <mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
+        </div>
+
       </div>
       <div class="h-14 w-0.5 bg-gray-400"></div>
       <div>
-        <fa-icon [icon]="faTruck" />
-        <h3>Free Morocco delivery</h3>
+        <p-button label="Add a Review" class="p-3 text-white font-bold text-sm bg-yellow-400 rounded-xl " />
       </div>
     </div>
   </div>

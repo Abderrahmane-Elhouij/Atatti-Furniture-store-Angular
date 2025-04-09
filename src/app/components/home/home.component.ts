@@ -1,16 +1,22 @@
-import {AfterViewInit, Component, inject, OnInit, signal, WritableSignal} from '@angular/core';
-import Splide from '@splidejs/splide';
-import {ProductComponent} from '../products/product/product.component';
-import {MockDataService} from '../../services/mock-data.service';
+import { Component, inject, OnInit, signal, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { ProductComponent } from '../products/product/product.component';
+import { MockDataService } from '../../services/mock-data.service';
 import '@google/model-viewer';
-import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
-import {AnimateFromViewportDirective} from '../../animate-from-viewport.directive';
-import {AddToCardComponent} from '../add-to-card/add-to-card.component';
-import {Hero1Component} from "./hero1/hero1.component";
-import {Hero2Component} from "./hero2/hero2.component";
-import {Hero3Component} from "./hero3/hero3.component";
-import {CommonModule} from '@angular/common';
-import {AuthService} from '../../services/auth.service';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { AnimateFromViewportDirective } from '../../animate-from-viewport.directive';
+import { AddToCardComponent } from '../add-to-card/add-to-card.component';
+import { Hero1Component } from "./hero1/hero1.component";
+import { Hero2Component } from "./hero2/hero2.component";
+import { Hero3Component } from "./hero3/hero3.component";
+import { CommonModule } from '@angular/common';
+import { AuthService } from '../../services/auth.service';
+import Swiper from 'swiper';
+import { Autoplay, Navigation, Pagination } from 'swiper/modules';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
 @Component({
   selector: 'app-home',
@@ -18,63 +24,60 @@ import {AuthService} from '../../services/auth.service';
   standalone: true,
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
-  schemas: [CUSTOM_ELEMENTS_SCHEMA], // Add this line
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-
-export class HomeComponent implements OnInit{
-
+export class HomeComponent implements OnInit, AfterViewInit {
   private authService = inject(AuthService);
-  // List of components
-  components = ['hero1', 'hero2', 'hero3'];
-  currentComponent = 'hero1'; // Start with the first component
-  intervalId: any;
   username = signal<string>("");
+  bestSellerProducts: any[] = [];
+  private productsService = inject(MockDataService);
+
+  @ViewChild('swiperContainer') swiperContainer!: ElementRef;
+  swiper: Swiper | null = null;
 
   ngOnInit() {
-    // Start the interval
-    this.intervalId = setInterval(() => {
-      this.nextComponent();
-    }, 10000); // Change every 10 seconds
-
     this.username.set(this.authService.username());
+    this.bestSellerProducts = this.getBestSellerProducts();
   }
 
-  ngOnDestroy() {
-    // Clear the interval when the component is destroyed
-    if (this.intervalId) {
-      clearInterval(this.intervalId);
-    }
+  ngAfterViewInit() {
+    this.initSwiper();
   }
 
-  nextComponent() {
-    // Find the next component in the array
-    const currentIndex = this.components.indexOf(this.currentComponent);
-    const nextIndex = (currentIndex + 1) % this.components.length;
-    this.currentComponent = this.components[nextIndex];
+  private initSwiper() {
+    this.swiper = new Swiper(this.swiperContainer.nativeElement, {
+      modules: [Autoplay, Navigation, Pagination],
+      slidesPerView: 1,
+      spaceBetween: 0,
+      effect: 'fade',
+      speed: 1000,
+      autoplay: {
+        delay: 4000,
+        disableOnInteraction: false,
+        pauseOnMouseEnter: true,
+      },
+      loop: true,
+      touchRatio: 0,
+      simulateTouch: false,
+      allowTouchMove: false,
+      noSwiping: true,
+      noSwipingClass: 'swiper-slide',
+      resistance: false,
+      resistanceRatio: 0,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    });
   }
 
-  private productsService = inject(MockDataService);
-  products = this.productsService.getData();
-  bestSellerProducts = this.bestSellerData();
-
-  bestSellerData() {
-    const allProducts: any[] = [];
-
-    function collectProducts(obj: any) {
-      if (Array.isArray(obj)) {
-        allProducts.push(...obj);
-      } else if (typeof obj === "object" && obj !== null) {
-        Object.values(obj).forEach(value => collectProducts(value));
-      }
-    }
-
-    collectProducts(this.products);
-
-    // Manually select specific items by their indices
-    const selectedIndices = [0, 7, 14, 19, 25, 31, 40, 70];  // Indices for 1st, 8th, 15th, 20th items
-    const selectedProducts = selectedIndices.map(index => allProducts[index]).filter(Boolean);
-
+  getBestSellerProducts() {
+    const allProducts = this.productsService.getData();
+    const selectedProducts = allProducts.seatings.chairs.slice(0, 4);
     return selectedProducts;
   }
-
 }
